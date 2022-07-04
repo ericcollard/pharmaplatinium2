@@ -1,0 +1,5 @@
+{
+  "and currently has :count report": "and currently has :count report|and currently has :count reports",
+  ":count report": "{0} no report|{1}:count report|[2,*]:count reports"
+
+}
