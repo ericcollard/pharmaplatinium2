@@ -24,7 +24,7 @@ class UsersDataTable extends DataTable
             ->addColumn('action', 'users.action',1)
             ->editColumn('last_login', function ($request) {
                 if ($request->last_login)
-                    return $request->last_login->formatLocalized('%c'); //'%d %B %Y %H:%M'
+                    return $request->last_login->formatLocalized('%d %B %Y'); //'%d %B %Y %H:%M'  %c
                 else
                     return 'Aucune';
             });
