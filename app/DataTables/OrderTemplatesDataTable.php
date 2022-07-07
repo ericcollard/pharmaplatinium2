@@ -45,8 +45,15 @@ class OrderTemplatesDataTable extends DataTable
     {
 
         $builder =  $model->newQuery();
+        $client_id = 2;
         if ($this->manager)
             $builder->join('brands','brands.id','=','order_templates.brand_id')->where('brands.manager_id',$this->manager->id);
+        if ($client_id)
+            $builder->join('order_template_contents','order_template_contents.ordertemplate_id','=','order_templates.id')
+                ->join('orders','order_template_contents.id','=','orders.ordertemplatecontent_id')
+                ->where('orders.user_id','=',$client_id);
+
+
         return $builder;
     }
 

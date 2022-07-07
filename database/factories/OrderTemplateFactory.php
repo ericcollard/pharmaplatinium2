@@ -25,7 +25,7 @@ class OrderTemplateFactory extends Factory
             'title' => $this->faker->name(),
             'dead_line' => now()->addDays(30),
             'franco' => 1000,
-            'brand_id' => 1, // password
+            'brand_id' => $this->faker->numberBetween($min = 1, $max = 4),
             'comment' => $this->faker->text(),
             'status' => $this->faker->randomElement(['Brouillon', 'En cours', 'Close', 'Livrée']),
         ];
