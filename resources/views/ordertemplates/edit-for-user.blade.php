@@ -1,5 +1,26 @@
 @extends('layouts.vertical', ["page_title"=> "Commande pharmacie"])
 
+
+@section('css')
+    <style>
+        .inferior {
+            position: absolute;
+            font-weight: lighter;
+            line-height: 0.5rem;
+            font-size: 0.5rem;
+            left : 0;
+            bottom: 2px;
+        }
+
+        .ref {
+            position: relative;
+        }
+
+    </style>
+
+@endsection
+
+
 @section('content')
     <!-- Start Content-->
     <div class="container-fluid">
@@ -119,12 +140,16 @@
 
                                 </tr>
                                 </thead>
+                                <?php
+                                    $orderValue = 0;
+                                ?>
                                 <tbody>
                                     @foreach($orders as $index => $order)
                                         <?php
                                             $totalQty = $order->orderTemplateContent->totalQty();
                                             $packageQty = !is_null($order->package_qty) ? number_format($order->package_qty,0)  : 'nc';
                                             $inpoutIndex = "#".$order->order_id."/".$packageQty."/".$order->ean;
+                                            $orderValue+=$order->totalValue();
                                         ?>
                                     <tr>
                                         <th>{{ $order->ean }}</th>
@@ -144,15 +169,24 @@
                                         </td>
                                         <td>{{ number_format($order->totalValue(),2).'€' }}</td>
                                         <td>{{ !is_null($order->step_value) ? number_format($order->step_value,0)  : 'nc' }}</td>
-                                        <td {!! $totalQty <  $order->step_value ? 'style="color : red; font-weight: bold"' : 'style="color : green; font-weight: bold"' !!}  >{{ $totalQty }}</td>
+                                        <td {!! $totalQty <  $order->step_value ? 'style="color : red; font-weight: bold"' : 'style="color : green; font-weight: bold"' !!}  class="ref">
+                                            {{ $totalQty }}
+                                            @if ($totalQty <  $order->step_value)
+                                                <span class="inferior">Quantité palier<br>non atteinte</span>
+                                            @endif
+                                        </td>
                                         <td {!! $totalQty <  $order->step_value ? 'style="color : red; font-weight: bold"' : 'style="text-decoration: line-through"' !!}  >{{ !is_null($order->price) ? number_format($order->price,2).'€'  : 'nc' }}</td>
                                         <td {!! $totalQty >=  $order->step_value ? 'style="color : green; font-weight: bold"' : 'style="text-decoration: line-through"' !!}  >{{ !is_null($order->step_price) ? number_format($order->step_price,2).'€'  : 'nc' }}</td>
 
                                         <td><a href="#" data-bs-toggle="tooltip" title="{{ $order->comment }}">{!! Str::limit($order->comment , 10, ' ...')  !!}</a></td>
 
                                     </tr>
-
                                     @endforeach
+                                    <tr>
+                                        <td colspan="5" class="text-end">Valeur totale de la commande de {{ Auth::user()->name }}</td>
+                                        <td >{{ number_format($orderValue,2).'€' }}</td>
+                                        <td colspan="5"></td>
+                                    </tr>
                                 </tbody>
                             </table>
                             </div>

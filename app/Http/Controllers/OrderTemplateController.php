@@ -6,6 +6,7 @@ use App\DataTables\OrderTemplatesDataTable;
 use App\Models\OrderTemplate;
 use App\Models\OrderTemplateContent;
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +19,19 @@ class OrderTemplateController extends Controller
      */
     public function index(OrderTemplatesDataTable $dataTable)
     {
+
+        $manager = "";
+        if(array_key_exists('from', request()->all()))
+        {
+            $manager_id = request()->from;
+            $managerUser = User::where('id', $manager_id)
+                ->firstOrFail();
+            $dataTable->with('manager', $managerUser);
+        }
+
+
+        $managers = User::whereHas('brands')->get();
+        $dataTable->with('managers', $managers);
         return $dataTable->render('ordertemplates.index');
     }
 

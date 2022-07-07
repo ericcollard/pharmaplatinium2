@@ -45,7 +45,8 @@ class OrderTemplatesDataTable extends DataTable
     {
 
         $builder =  $model->newQuery();
-
+        if ($this->manager)
+            $builder->join('brands','brands.id','=','order_templates.brand_id')->where('brands.manager_id',$this->manager->id);
         return $builder;
     }
 
@@ -60,16 +61,55 @@ class OrderTemplatesDataTable extends DataTable
         // Boutons
         $buttons = [];
 
-        if (Auth::user()->can('create',OrderTemplate::class)) {
-            $buttons[] = [
-                'text' =>'Nouveau',
-                'action' => "function (e, dt, button, config) {
-                                    window.location = '".route('orderTemplate.create')."';
+        if (! Auth::guest()) {
+            if (Auth::user()->can('create', OrderTemplate::class)) {
+                $buttons[] = [
+                    'text' => 'Nouveau',
+                    'action' => "function (e, dt, button, config) {
+                                    window.location = '" . route('orderTemplate.create') . "';
                                 }",
-                'className' => 'btn btn-success mb-2 me-2',
+                    'className' => 'btn btn-success mb-2 me-2',
+                ];
+            }
+        }
+
+        $localRoute = route('orderTemplate.list'); //route sans marque
+        $managersButtons  = [];
+        foreach ($this->managers as $manager)
+        {
+            $managersButtons[] =  [
+                [
+                    'text' =>'<i class="fa fa-eye"></i> ' . $manager->name,
+                    'action' => "function (e, dt, button, config) {
+                                        window.location = '".$localRoute."' + '?from=".$manager->id."';
+                                    }"
+
+                ],
             ];
         }
 
+        if ($this->manager)
+        {
+            $buttons[] = [
+                'text' =>'Supprimer le filtre de Gestionnaire',
+                'action' => "function (e, dt, button, config) {
+                                        window.location = '".$localRoute."';
+                                    }",
+                'className' => 'btn btn-info mb-2 me-2',
+            ];
+        }
+        else
+        {
+            $buttons[] = [
+                "extend"=> 'collection',
+                "text"=> 'Filtrer par Gestionnaire',
+                'className' => 'btn btn-info mb-2 me-2',
+                "buttons" =>
+                    [
+                        $managersButtons
+                    ]
+            ];
+        }
 
         $buttons[] = [
             'extend' => 'reload',
@@ -87,6 +127,13 @@ class OrderTemplatesDataTable extends DataTable
             'className' => 'btn btn-warning mb-2 me-2',
         ];
 
+        // Paramètres optionnels à transmettre à la view
+        $custom_paramaters = [];
+        $custom_paramaters['basis_route'] = $localRoute;
+        if ($this->manager)
+            $custom_paramaters['manager_name'] = $this->manager->name;
+        else
+            $custom_paramaters['manager_name'] = "";
 
 
         return $this->builder()
@@ -100,6 +147,7 @@ class OrderTemplatesDataTable extends DataTable
                     'url' => url('/vendor/datatables/lang/'.config('locale.languages')[session ('locale')][1].'.json'),//<--here
                 ],
                 'buttons' => $buttons,
+                'custom_paramaters' => $custom_paramaters
 
             ])
             ;
