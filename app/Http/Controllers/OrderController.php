@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\OrderTemplatesDataTable;
-use App\Models\OrderTemplate;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
-class OrderTemplateController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(OrderTemplatesDataTable $dataTable)
+    public function index()
     {
-        return $dataTable->render('ordertemplates.index');
+        //
     }
 
     /**
@@ -42,22 +41,21 @@ class OrderTemplateController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\OrderTemplate  $orderTemplate
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(OrderTemplate $orderTemplate)
+    public function show(Order $order)
     {
-
-        return view('ordertemplates.show', ['orderTemplate' => $orderTemplate]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\OrderTemplate  $orderTemplate
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(OrderTemplate $orderTemplate)
+    public function edit(Order $order)
     {
         //
     }
@@ -66,10 +64,10 @@ class OrderTemplateController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\OrderTemplate  $orderTemplate
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OrderTemplate $orderTemplate)
+    public function update(Request $request, Order $order)
     {
         //
     }
@@ -77,10 +75,10 @@ class OrderTemplateController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\OrderTemplate  $orderTemplate
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(OrderTemplate $orderTemplate)
+    public function destroy(Order $order)
     {
         //
     }

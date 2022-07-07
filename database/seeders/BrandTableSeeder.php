@@ -14,6 +14,8 @@ class BrandTableSeeder extends Seeder
      */
     public function run()
     {
+        \DB::table('brands')->delete();
+
         \DB::table('brands')->insert(array (
             0 =>
                 array (

@@ -43,10 +43,10 @@
                 <div class="collapse" id="sidebarMesures" style="">
                     <ul class="side-nav-second-level">
                         <li >
-                            <a href="#">Modèles</a>
+                            <a href="{{ route('orderTemplate.list') }}">Modèles</a>
                         </li>
                         <li >
-                            <a href="#">Orders</a>
+                            <a href="#">Commandes</a>
                         </li>
                     </ul>
                 </div>

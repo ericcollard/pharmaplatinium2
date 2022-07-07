@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\OrderTemplateContentController;
+use App\Http\Controllers\OrderTemplateController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +40,22 @@ Route::patch('/brands/{brand}',[BrandController::class, 'update'])->name('brand.
 Route::post('/brands',[BrandController::class, 'store'])->name('brand.store');
 Route::delete('/brands/{brand}',[BrandController::class, 'destroy'])->name('brand.destroy');
 
+
+Route::get('/ordertemplate', [OrderTemplateController::class, 'index'])->name('orderTemplate.list')->middleware('auth');
+Route::get('/ordertemplate/create', [OrderTemplateController::class, 'create'])->name('orderTemplate.create');
+Route::get('/ordertemplate/{orderTemplate}', [OrderTemplateController::class, 'show'])->name('orderTemplate.show')->middleware('auth');
+Route::get('/ordertemplate/{orderTemplate}/edit', [OrderTemplateController::class, 'edit'])->name('orderTemplate.edit')->middleware('auth');
+Route::patch('/ordertemplate/{orderTemplate}',[OrderTemplateController::class, 'update'])->name('orderTemplate.update');
+Route::post('/ordertemplate',[OrderTemplateController::class, 'store'])->name('orderTemplate.store');
+Route::delete('/ordertemplate/{orderTemplate}',[OrderTemplateController::class, 'destroy'])->name('orderTemplate.destroy');
+
+Route::get('/ordertemplatecontent', [OrderTemplateContentController::class, 'index'])->name('orderTemplateContent.list')->middleware('auth');
+Route::get('/ordertemplatecontent/create', [OrderTemplateContentController::class, 'create'])->name('orderTemplateContent.create');
+Route::get('/ordertemplatecontent/{orderTemplateContent}', [OrderTemplateContentController::class, 'show'])->name('orderTemplateContent.show')->middleware('auth');
+Route::get('/ordertemplatecontent/{orderTemplateContent}/edit', [OrderTemplateContentController::class, 'edit'])->name('orderTemplateContent.edit')->middleware('auth');
+Route::patch('/ordertemplatecontent/{orderTemplateContent}',[OrderTemplateContentController::class, 'update'])->name('orderTemplateContent.update');
+Route::post('/ordertemplatecontent',[OrderTemplateContentController::class, 'store'])->name('orderTemplateContent.store');
+Route::delete('/ordertemplatecontent/{orderTemplateContent}',[OrderTemplateContentController::class, 'destroy'])->name('orderTemplateContent.destroy');
 
 
 Route::get('/language/{lang}', [MainController::class, 'language'])->name('language');
