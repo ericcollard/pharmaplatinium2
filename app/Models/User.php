@@ -60,6 +60,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Brand::class,'manager_id');
     }
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class,'user_id');
+    }
+
     /* -- Roles function -- */
 
     /***

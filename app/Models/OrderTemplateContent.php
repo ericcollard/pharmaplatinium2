@@ -26,9 +26,20 @@ class OrderTemplateContent extends Model
 
     public function totalValue()
     {
-        return $this->orders->sum(function($orderDetail) {
-            return $orderDetail->qty * $this->price;
-        });
+        $totalQty = $this->totalQty();
+        if ($this->step_value && $this->step_price && $totalQty >= $this->step_value)
+        {
+            return $this->orders->sum(function($orderDetail) {
+                return $orderDetail->qty * $this->step_price;
+            });
+        }
+        else
+        {
+            return $this->orders->sum(function($orderDetail) {
+                return $orderDetail->qty * $this->price;
+            });
+        }
     }
+
 
 }

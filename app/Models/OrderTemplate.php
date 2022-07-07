@@ -24,6 +24,8 @@ class OrderTemplate extends Model
         'multi_deliveries',
     ];
 
+    protected $with = ['brand'];
+
     /**
      * The attributes that should be cast to native types.
      *

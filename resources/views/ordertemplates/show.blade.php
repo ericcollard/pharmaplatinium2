@@ -110,14 +110,9 @@
                                 </thead>
                                 <tbody>
                                     @foreach($orderTemplate->content as $index => $orderTemplateContentItem)
-
                                         <?php
                                             $totalQty = $orderTemplateContentItem->totalQty();
-
-
-
                                         ?>
-
                                     <tr>
                                         <th scope="row">{{ $orderTemplateContentItem->ean }}</th>
                                         <td>{{ $orderTemplateContentItem->name }}</td>

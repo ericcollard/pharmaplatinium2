@@ -3,11 +3,10 @@
 namespace App\DataTables;
 
 use App\Models\OrderTemplate;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Yajra\DataTables\Html\Button;
+use Yajra\DataTables\DataTableAbstract;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class OrderTemplatesDataTable extends DataTable
@@ -18,7 +17,7 @@ class OrderTemplatesDataTable extends DataTable
      * @param mixed $query Results from query() method.
      * @return \Yajra\DataTables\DataTableAbstract
      */
-    public function dataTable($query)
+    public function dataTable($query): DataTableAbstract
     {
         return datatables()
             ->eloquent($query)
@@ -41,15 +40,11 @@ class OrderTemplatesDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\OrderTemplate $model
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(OrderTemplate $model)
+    public function query(OrderTemplate $model): Builder
     {
 
         $builder =  $model->newQuery();
-        $builder->join('brands', 'brands.id', '=', 'order_templates.brand_id');
-        $builder->select('order_templates.*','brands.name as labo');
 
         return $builder;
     }
@@ -59,7 +54,7 @@ class OrderTemplatesDataTable extends DataTable
      *
      * @return \Yajra\DataTables\Html\Builder
      */
-    public function html()
+    public function html(): \Yajra\DataTables\Html\Builder
     {
 
         // Boutons
@@ -119,8 +114,8 @@ class OrderTemplatesDataTable extends DataTable
     {
         return [
 
-            Column::make('id'),
-            Column::make('labo','labo')->title('Laboratoire'),
+            Column::make('id')->title('Ref'),
+            Column::make('brand.name')->title('Laboratoire'),
             Column::make('title')->title('Titre'),
             Column::make('created_at')->title('Création'),
             Column::make('dead_line')->title('Date de cloture'),

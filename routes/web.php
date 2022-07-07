@@ -48,6 +48,8 @@ Route::get('/ordertemplate/{orderTemplate}/edit', [OrderTemplateController::clas
 Route::patch('/ordertemplate/{orderTemplate}',[OrderTemplateController::class, 'update'])->name('orderTemplate.update');
 Route::post('/ordertemplate',[OrderTemplateController::class, 'store'])->name('orderTemplate.store');
 Route::delete('/ordertemplate/{orderTemplate}',[OrderTemplateController::class, 'destroy'])->name('orderTemplate.destroy');
+Route::get('/order/{orderTemplate}/edit', [OrderTemplateController::class, 'edit_for_user'])->name('order.edit')->middleware('auth');
+Route::patch('/order/{orderTemplate}',[OrderTemplateController::class, 'update_for_user'])->name('order.update');
 
 Route::get('/ordertemplatecontent', [OrderTemplateContentController::class, 'index'])->name('orderTemplateContent.list')->middleware('auth');
 Route::get('/ordertemplatecontent/create', [OrderTemplateContentController::class, 'create'])->name('orderTemplateContent.create');
