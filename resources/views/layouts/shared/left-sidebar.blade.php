@@ -37,16 +37,35 @@
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarMesures" aria-expanded="false" aria-controls="sidebarMesures" class="side-nav-link collapsed">
                     <i class="uil uil-ruler"></i>
-                    <span> COMMANDES </span>
+                    <span> MODELES </span>
                     <span class="menu-arrow"></span>
                 </a>
                 <div class="collapse" id="sidebarMesures" style="">
                     <ul class="side-nav-second-level">
                         <li >
-                            <a href="{{ route('orderTemplate.list') }}">Modèles</a>
+                            <a href="{{ route('orderTemplate.list') }}@if (\Illuminate\Support\Facades\Auth::check())?from={{ Auth::user()->id }}@endif">Mes modèles</a>
                         </li>
                         <li >
-                            <a href="#">Commandes</a>
+                            <a href="{{ route('orderTemplate.list') }}">Tous</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarAdmin1" aria-expanded="false" aria-controls="sidebarAdmin1" class="side-nav-link collapsed">
+                    <i class="uil uil-cog"></i>
+                    <span> COMMANDES </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarAdmin1" style="">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="{{ route('order.index') }}">Commandes Ouvertes</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('order.index') }}">Commandes closes</a>
                         </li>
                     </ul>
                 </div>
@@ -82,8 +101,8 @@
                 <i class="mdi mdi-close"></i>
             </a>
             <img src="{{asset('assets/images/help-icon.svg')}}" height="90" alt="Helper Icon Image" />
-            <h5 class="mt-3">Soutenir</h5>
-            <p class="mb-3">En soutenant nos actions, vous favorisez l'existance d'une source de donnée indépendante</p>
+            <h5 class="mt-3">xxx</h5>
+            <p class="mb-3">ksjhdqkjshdfkjhf</p>
             <a href="/posts/5/98" class="btn btn-outline-light btn-sm">Participer</a>
         </div>
         <!-- end Help Box -->

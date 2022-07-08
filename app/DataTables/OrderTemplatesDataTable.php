@@ -19,9 +19,8 @@ class OrderTemplatesDataTable extends DataTable
      */
     public function dataTable($query): DataTableAbstract
     {
-        return datatables()
+        $datatable = datatables()
             ->eloquent($query)
-            ->addColumn('action', 'ordertemplates.action')
             ->editColumn('created_at', function ($request) {
                 if ($request->created_at)
                     return $request->created_at->formatLocalized('%d %B %Y'); //'%d %B %Y %H:%M'  %c
@@ -34,6 +33,15 @@ class OrderTemplatesDataTable extends DataTable
                 else
                     return 'Aucune';
             });
+        if ($this->client_id)
+        {
+            $datatable->addColumn('action', 'ordertemplates.action-for-client');
+        }
+        else
+        {
+            $datatable->addColumn('action', 'ordertemplates.action');
+        }
+        return $datatable;
     }
 
 
@@ -45,14 +53,15 @@ class OrderTemplatesDataTable extends DataTable
     {
 
         $builder =  $model->newQuery();
-        $client_id = 2;
         if ($this->manager)
             $builder->join('brands','brands.id','=','order_templates.brand_id')->where('brands.manager_id',$this->manager->id);
-        if ($client_id)
+        if ($this->client_id)
             $builder->join('order_template_contents','order_template_contents.ordertemplate_id','=','order_templates.id')
                 ->join('orders','order_template_contents.id','=','orders.ordertemplatecontent_id')
-                ->where('orders.user_id','=',$client_id);
-
+                ->where('orders.user_id','=',$this->client_id)
+                ->select('order_templates.*')->distinct();
+        if ($this->status)
+            $builder->where('status','=',$this->status);
 
         return $builder;
     }
@@ -82,17 +91,18 @@ class OrderTemplatesDataTable extends DataTable
 
         $localRoute = route('orderTemplate.list'); //route sans marque
         $managersButtons  = [];
-        foreach ($this->managers as $manager)
-        {
-            $managersButtons[] =  [
-                [
-                    'text' =>'<i class="fa fa-eye"></i> ' . $manager->name,
-                    'action' => "function (e, dt, button, config) {
-                                        window.location = '".$localRoute."' + '?from=".$manager->id."';
-                                    }"
+        if ($this->managers) {
+            foreach ($this->managers as $manager) {
+                $managersButtons[] = [
+                    [
+                        'text' => '<i class="fa fa-eye"></i> ' . $manager->name,
+                        'action' => "function (e, dt, button, config) {
+                                            window.location = '" . $localRoute . "' + '?from=" . $manager->id . "';
+                                        }"
 
-                ],
-            ];
+                    ],
+                ];
+            }
         }
 
         if ($this->manager)

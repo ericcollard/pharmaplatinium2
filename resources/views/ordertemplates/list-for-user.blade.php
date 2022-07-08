@@ -1,4 +1,4 @@
-@extends('layouts.vertical', ["page_title"=> "Liste des modèles de commande"])
+@extends('layouts.vertical', ["page_title"=> "Liste des commandes"])
 
 
 
@@ -32,17 +32,13 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ config('app.name') }}</a></li>
-                            <li class="breadcrumb-item">Modèles de commande</li>
+                            <li class="breadcrumb-item">Commandes</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Liste des modèles de commande</h4>
+                    <h4 class="page-title">Liste des commandes</h4>
                     <p>Filtres appliqués :</p>
                     <ul>
-                        @if ($dataTable->getOptions()['custom_paramaters']['manager_name'])
-                            <li>Gestionnaire de commande : {{ $dataTable->getOptions()['custom_paramaters']['manager_name'] }}</li>
-                        @else
-                            <p>Aucun</p>
-                        @endif
+                        <li>Donneur d'ordre : {{ Auth::user()->name }}</li>
                     </ul>
                 </div>
             </div>

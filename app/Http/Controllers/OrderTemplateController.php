@@ -35,6 +35,21 @@ class OrderTemplateController extends Controller
         return $dataTable->render('ordertemplates.index');
     }
 
+    public function listOfOrder(OrderTemplatesDataTable $dataTable)
+    {
+
+        $status = "";
+        $client_id = Auth::user()->id;
+        $dataTable->with('client_id', $client_id);
+        if(array_key_exists('status', request()->all()))
+        {
+            $status = request()->status;
+            $dataTable->with('status', $status);
+        }
+
+        return $dataTable->render('ordertemplates.list-for-user');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
