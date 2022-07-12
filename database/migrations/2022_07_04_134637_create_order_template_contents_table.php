@@ -20,6 +20,7 @@ class CreateOrderTemplateContentsTable extends Migration
             $table->string('name');
             $table->string('variant')->nullable();
             $table->decimal('price',19,4)->default(0);
+            $table->decimal('discount',19,4)->default(0);
             $table->decimal('step_price',19,4)->nullable();
             $table->unsignedInteger('step_value')->nullable();
             $table->unsignedInteger('package_qty')->nullable();

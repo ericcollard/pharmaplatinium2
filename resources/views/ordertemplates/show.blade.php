@@ -90,6 +90,19 @@
                 <!-- Profile -->
                 <div class="card ">
                     <div class="card-body ">
+
+
+                        <div class="row">
+                            <div class="col-12 text-sm-end">
+                                <button type="button" class="btn btn-success m-lg-2">
+                                    <a href="{{ route('orderTemplateContent.create' , ['orderTemplate' => $orderTemplate]) }}" style="color: inherit">
+                                        <i class="mdi mdi-account-edit me-1"></i> Ajouter une ligne
+                                    </a>
+                                </button>
+                            </div>
+                        </div>
+
+
                         @if ($orderTemplate->content->count() > 0)
                             <div class="table-responsive-xl">
                             <table class="table">
@@ -127,7 +140,6 @@
 
 
                                         <td class="table-action">
-                                            <a href="{{ route('orderTemplateContent.show',$orderTemplateContentItem) }}" class="action-icon"> <i class="mdi mdi-magnify-plus"></i></a>
                                             <a href="{{ route('orderTemplateContent.edit',$orderTemplateContentItem) }}" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
                                             <form id="delete-{{ $index }}" method="POST" action="{{ route('orderTemplateContent.destroy',$orderTemplateContentItem) }}" class="d-sm-inline-block action-icon">
                                                 {{ csrf_field() }}

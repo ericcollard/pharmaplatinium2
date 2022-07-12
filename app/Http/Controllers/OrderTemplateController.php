@@ -319,7 +319,8 @@ class OrderTemplateController extends Controller
      */
     public function destroy(OrderTemplate $orderTemplate)
     {
-        //
+        $orderTemplate->delete();
+        return redirect(route('orderTemplate.list'))->with( ['message' => 'Fiche supprimée', 'alert' => 'success']);
     }
 
     /**
