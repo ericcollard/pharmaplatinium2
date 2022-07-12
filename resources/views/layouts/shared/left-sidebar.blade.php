@@ -98,9 +98,6 @@
                         <li>
                             <a href="{{ route('brand.list') }}">Laboratoires</a>
                         </li>
-                        <li>
-                            <a href="#">{{ __('Attributes') }}</a>
-                        </li>
                     </ul>
                 </div>
             </li>

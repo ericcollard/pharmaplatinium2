@@ -41,7 +41,7 @@ Route::post('/brands',[BrandController::class, 'store'])->name('brand.store');
 Route::delete('/brands/{brand}',[BrandController::class, 'destroy'])->name('brand.destroy');
 
 
-Route::get('/ordertemplate', [OrderTemplateController::class, 'index'])->name('orderTemplate.index')->middleware('auth');
+Route::get('/ordertemplate', [OrderTemplateController::class, 'index'])->name('orderTemplate.list')->middleware('auth');
 Route::get('/ordertemplate/all', [OrderTemplateController::class, 'listOfAllOrderTemplate'])->name('orderTemplate.allOrderTemplates')->middleware('auth');
 Route::get('/ordertemplate/draft', [OrderTemplateController::class, 'listOfDraftOrderTemplate'])->name('orderTemplate.draftOrderTemplates')->middleware('auth');
 Route::get('/ordertemplate/open', [OrderTemplateController::class, 'listOfOpenedOrderTemplate'])->name('orderTemplate.openedOrderTemplates')->middleware('auth');

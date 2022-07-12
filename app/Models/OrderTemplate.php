@@ -52,4 +52,9 @@ class OrderTemplate extends Model
             return $orderDetail->totalValue();
         });
     }
+
+    public function path()
+    {
+        return route('orderTemplate.show', $this);
+    }
 }

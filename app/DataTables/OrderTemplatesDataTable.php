@@ -91,7 +91,7 @@ class OrderTemplatesDataTable extends DataTable
             }
         }
 
-        $localRoute = route('orderTemplate.index'); //route sans marque
+        $localRoute = route('orderTemplate.list'); //route sans marque
         $managersButtons  = [];
         if ($this->managers) {
             foreach ($this->managers as $manager) {

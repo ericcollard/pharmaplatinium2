@@ -151,7 +151,7 @@
                             <p class="text-muted"><strong>Téléphone :</strong> <span class="ms-2">{{ $user->phone ?: 'nc'  }}</span></p>
 
                             <p class="text-muted"><strong>Dernière connexion :</strong> <span class="ms-2">
-                                    {{ $user->last_login->format('d/m/Y') ?: 'nc'  }}
+                                    {{ $user->last_login ? $user->last_login->format('d/m/Y') : 'nc'  }}
                                 </span></p>
 
                         </div>

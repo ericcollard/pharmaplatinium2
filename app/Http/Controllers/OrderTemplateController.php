@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\OrderTemplatesDataTable;
+use App\Models\Brand;
 use App\Models\OrderTemplate;
 use App\Models\OrderTemplateContent;
 use App\Models\Order;
 use App\Models\User;
+use DateInterval;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Validation\Rule;
 
 class OrderTemplateController extends Controller
 {
@@ -132,26 +136,8 @@ class OrderTemplateController extends Controller
 
 
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+
 
     /**
      * Display the specified resource.
@@ -244,7 +230,60 @@ class OrderTemplateController extends Controller
      */
     public function edit(OrderTemplate $orderTemplate)
     {
-        //
+        $action = URL::route('orderTemplate.update',['orderTemplate' => $orderTemplate]);
+        $method = 'PATCH';
+        $brands = Brand::all();
+        return view('ordertemplates.edit', compact('action', 'method','orderTemplate','brands'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $action = URL::route('orderTemplate.store');
+        $method = 'POST';
+        $brands = Brand::all();
+        $orderTemplate = new OrderTemplate();
+        $orderTemplate->franco = 1000;
+        $orderTemplate->status = 'Brouillon';
+        $orderTemplate->dead_line = date_add(now(),DateInterval::createFromDateString('1 month'));
+        return view('ordertemplates.edit', compact('action','orderTemplate', 'method','brands'));
+    }
+
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $this->validate(request(), [
+                'title' =>'required',
+                'brand_id' =>  'required',
+                'franco' => 'required|numeric',
+                'dead_line' =>  'required|date',
+                'status' => 'required',
+                Rule::in(["Brouillon","Ouverte","Fermée"]),
+            ]
+        );
+
+        try {
+
+            $data = $request->all();
+            $orderTemplate = OrderTemplate::create($data);
+
+        } catch (\Exception $e) {
+            // catch exception when trying to insert invalid reply (spam or missing data)
+            abort(403, "Impossible de créer ce nouveau modèle de commande");
+        }
+
+        return redirect($orderTemplate->path())->with( ['message' => 'Modèle créé', 'alert' => 'success']);
     }
 
     /**
@@ -256,7 +295,20 @@ class OrderTemplateController extends Controller
      */
     public function update(Request $request, OrderTemplate $orderTemplate)
     {
-        //
+        $this->validate(request(), [
+                'brand_id' =>  'required',
+                'franco' => 'required|numeric',
+                'dead_line' =>  'required|date',
+                'status' => 'required',
+                    Rule::in(["Brouillon","Ouverte","Fermée"]),
+               ]
+        );
+
+        $data = request()->all();
+
+        $orderTemplate->update($data);
+
+        return redirect(route('orderTemplate.show',['orderTemplate' => $orderTemplate]))->with( ['message' => 'Fiche mise à jour', 'alert' => 'success']);
     }
 
     /**
