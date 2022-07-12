@@ -49,6 +49,10 @@ Route::patch('/ordertemplate/{orderTemplate}',[OrderTemplateController::class, '
 Route::post('/ordertemplate',[OrderTemplateController::class, 'store'])->name('orderTemplate.store');
 Route::delete('/ordertemplate/{orderTemplate}',[OrderTemplateController::class, 'destroy'])->name('orderTemplate.destroy');
 Route::get('/order', [OrderTemplateController::class, 'listOfOrder'])->name('order.index')->middleware('auth');
+Route::get('/order/draft', [OrderTemplateController::class, 'listOfDraftOrder'])->name('order.draftOrders')->middleware('auth');
+Route::get('/order/open', [OrderTemplateController::class, 'listOfOpenedOrder'])->name('order.openedOrders')->middleware('auth');
+Route::get('/order/close', [OrderTemplateController::class, 'listOfClosedOrder'])->name('order.closedOrders')->middleware('auth');
+Route::get('/order/delivered', [OrderTemplateController::class, 'listOfDeliveredOrder'])->name('order.deliveredOrders')->middleware('auth');
 Route::get('/order/{orderTemplate}/edit', [OrderTemplateController::class, 'edit_for_user'])->name('order.edit')->middleware('auth');
 Route::patch('/order/{orderTemplate}',[OrderTemplateController::class, 'update_for_user'])->name('order.update');
 Route::delete('/order/{orderTemplate}',[OrderTemplateController::class, 'destroy_for_user'])->name('order.destroy');

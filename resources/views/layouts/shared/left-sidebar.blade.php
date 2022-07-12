@@ -62,10 +62,16 @@
                 <div class="collapse" id="sidebarAdmin1" style="">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="{{ route('order.index') }}">Commandes Ouvertes</a>
+                            <a href="{{ route('order.openedOrders') }}">Commandes Ouvertes</a>
                         </li>
                         <li>
-                            <a href="{{ route('order.index') }}">Commandes closes</a>
+                            <a href="{{ route('order.closedOrders') }}">Commandes Fermées</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('order.deliveredOrders') }}">Commandes Livrées</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('order.index') }}">Toutes</a>
                         </li>
                     </ul>
                 </div>

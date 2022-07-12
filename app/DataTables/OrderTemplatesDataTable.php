@@ -33,9 +33,10 @@ class OrderTemplatesDataTable extends DataTable
                 else
                     return 'Aucune';
             });
-        if ($this->client_id)
+
+        if ($this->listType == "user")
         {
-            $datatable->addColumn('action', 'ordertemplates.action-for-client');
+            $datatable->addColumn('action', 'ordertemplates.action-for-user');
         }
         else
         {
@@ -77,7 +78,7 @@ class OrderTemplatesDataTable extends DataTable
         // Boutons
         $buttons = [];
 
-        if (! Auth::guest()) {
+        if (! Auth::guest() and $this->listType == "template") {
             if (Auth::user()->can('create', OrderTemplate::class)) {
                 $buttons[] = [
                     'text' => 'Nouveau',
@@ -105,28 +106,32 @@ class OrderTemplatesDataTable extends DataTable
             }
         }
 
-        if ($this->manager)
+        if ($this->listType == "template")
         {
-            $buttons[] = [
-                'text' =>'Supprimer le filtre de Gestionnaire',
-                'action' => "function (e, dt, button, config) {
+            if ($this->manager)
+            {
+                $buttons[] = [
+                    'text' =>'Supprimer le filtre de Gestionnaire',
+                    'action' => "function (e, dt, button, config) {
                                         window.location = '".$localRoute."';
                                     }",
-                'className' => 'btn btn-info mb-2 me-2',
-            ];
+                    'className' => 'btn btn-info mb-2 me-2',
+                ];
+            }
+            else
+            {
+                $buttons[] = [
+                    "extend"=> 'collection',
+                    "text"=> 'Filtrer par Gestionnaire',
+                    'className' => 'btn btn-info mb-2 me-2',
+                    "buttons" =>
+                        [
+                            $managersButtons
+                        ]
+                ];
+            }
         }
-        else
-        {
-            $buttons[] = [
-                "extend"=> 'collection',
-                "text"=> 'Filtrer par Gestionnaire',
-                'className' => 'btn btn-info mb-2 me-2',
-                "buttons" =>
-                    [
-                        $managersButtons
-                    ]
-            ];
-        }
+
 
         $buttons[] = [
             'extend' => 'reload',

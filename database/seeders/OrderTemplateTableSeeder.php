@@ -24,7 +24,7 @@ class OrderTemplateTableSeeder extends Seeder
                     'franco' => '2000',
                     'brand_id' => '1',
                     'comment' => 'Commande annuelle',
-                    'status' => 'Brouillon',
+                    'status' => 'Ouverte',
                     'multi_deliveries' => '1',
                     'created_at' => '2022-06-01 00:00:00',
                     'updated_at' => '2022-06-01 00:00:00',

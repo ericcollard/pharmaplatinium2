@@ -17,8 +17,11 @@ class OrderTemplateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(OrderTemplatesDataTable $dataTable)
+    public function index(OrderTemplatesDataTable $dataTable) // list of order templates
     {
+        $listType = "template";
+        $dataTable->with('listType', $listType); // pour utiliser le même datatable en 2 versions (template ou user)
+
 
         $manager = "";
         if(array_key_exists('from', request()->all()))
@@ -35,20 +38,44 @@ class OrderTemplateController extends Controller
         return $dataTable->render('ordertemplates.index');
     }
 
-    public function listOfOrder(OrderTemplatesDataTable $dataTable)
+    public function listOfOrder(OrderTemplatesDataTable $dataTable, $status="")
     {
+        $listType = "user";
+        $dataTable->with('listType', $listType); // pour utiliser le même datatable en 2 versions (template ou user)
 
-        $status = "";
-        $client_id = Auth::user()->id;
-        $dataTable->with('client_id', $client_id);
-        if(array_key_exists('status', request()->all()))
+
+        if ($status == "" and array_key_exists('status', request()->all()))
         {
             $status = request()->status;
-            $dataTable->with('status', $status);
         }
+        $client_id = Auth::user()->id;
+        $dataTable->with('client_id', $client_id);
+        $dataTable->with('status', $status);
 
         return $dataTable->render('ordertemplates.list-for-user');
     }
+
+    public function listOfDraftOrder(OrderTemplatesDataTable $dataTable)
+    {
+        return $this->listOfOrder($dataTable,"Brouillon");
+    }
+
+    public function listOfOpenedOrder(OrderTemplatesDataTable $dataTable)
+    {
+        return $this->listOfOrder($dataTable,"Ouverte");
+    }
+
+    public function listOfClosedOrder(OrderTemplatesDataTable $dataTable)
+    {
+        return $this->listOfOrder($dataTable,"Fermée");
+    }
+
+    public function listOfDeliveredOrder(OrderTemplatesDataTable $dataTable)
+    {
+        return $this->listOfOrder($dataTable,"Livrée");
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
