@@ -187,4 +187,17 @@ class OrderTemplateController extends Controller
     {
         //
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\OrderTemplate  $orderTemplate
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy_for_user(OrderTemplate $orderTemplate)
+    {
+        //
+    }
+
+
 }
