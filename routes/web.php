@@ -41,7 +41,12 @@ Route::post('/brands',[BrandController::class, 'store'])->name('brand.store');
 Route::delete('/brands/{brand}',[BrandController::class, 'destroy'])->name('brand.destroy');
 
 
-Route::get('/ordertemplate', [OrderTemplateController::class, 'index'])->name('orderTemplate.list')->middleware('auth');
+Route::get('/ordertemplate', [OrderTemplateController::class, 'index'])->name('orderTemplate.index')->middleware('auth');
+Route::get('/ordertemplate/all', [OrderTemplateController::class, 'listOfAllOrderTemplate'])->name('orderTemplate.allOrderTemplates')->middleware('auth');
+Route::get('/ordertemplate/draft', [OrderTemplateController::class, 'listOfDraftOrderTemplate'])->name('orderTemplate.draftOrderTemplates')->middleware('auth');
+Route::get('/ordertemplate/open', [OrderTemplateController::class, 'listOfOpenedOrderTemplate'])->name('orderTemplate.openedOrderTemplates')->middleware('auth');
+Route::get('/ordertemplate/close', [OrderTemplateController::class, 'listOfClosedOrderTemplate'])->name('orderTemplate.closedOrderTemplates')->middleware('auth');
+Route::get('/ordertemplate/delivered', [OrderTemplateController::class, 'listOfDeliveredOrderTemplate'])->name('orderTemplate.deliveredOrderTemplates')->middleware('auth');
 Route::get('/ordertemplate/create', [OrderTemplateController::class, 'create'])->name('orderTemplate.create');
 Route::get('/ordertemplate/{orderTemplate}', [OrderTemplateController::class, 'show'])->name('orderTemplate.show')->middleware('auth');
 Route::get('/ordertemplate/{orderTemplate}/edit', [OrderTemplateController::class, 'edit'])->name('orderTemplate.edit')->middleware('auth');

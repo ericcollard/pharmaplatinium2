@@ -43,10 +43,16 @@
                 <div class="collapse" id="sidebarMesures" style="">
                     <ul class="side-nav-second-level">
                         <li >
-                            <a href="{{ route('orderTemplate.list') }}@if (\Illuminate\Support\Facades\Auth::check())?from={{ Auth::user()->id }}@endif">Mes modèles</a>
+                            <a href="{{ route('orderTemplate.draftOrderTemplates') }}">Mes brouillons</a>
                         </li>
                         <li >
-                            <a href="{{ route('orderTemplate.list') }}">Tous</a>
+                            <a href="{{ route('orderTemplate.openedOrderTemplates') }}">Mes modèles ouverts</a>
+                        </li>
+                        <li >
+                            <a href="{{ route('orderTemplate.closedOrderTemplates') }}">Mes modèles fermés</a>
+                        </li>
+                        <li >
+                            <a href="{{ route('orderTemplate.allOrderTemplates') }}">Tous</a>
                         </li>
                     </ul>
                 </div>

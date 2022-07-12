@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\OrderTemplate;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTableAbstract;
@@ -90,7 +91,7 @@ class OrderTemplatesDataTable extends DataTable
             }
         }
 
-        $localRoute = route('orderTemplate.list'); //route sans marque
+        $localRoute = route('orderTemplate.index'); //route sans marque
         $managersButtons  = [];
         if ($this->managers) {
             foreach ($this->managers as $manager) {
@@ -113,7 +114,7 @@ class OrderTemplatesDataTable extends DataTable
                 $buttons[] = [
                     'text' =>'Supprimer le filtre de Gestionnaire',
                     'action' => "function (e, dt, button, config) {
-                                        window.location = '".$localRoute."';
+                                        window.location = '". route('orderTemplate.allOrderTemplates')."';
                                     }",
                     'className' => 'btn btn-info mb-2 me-2',
                 ];
@@ -156,6 +157,17 @@ class OrderTemplatesDataTable extends DataTable
             $custom_paramaters['manager_name'] = $this->manager->name;
         else
             $custom_paramaters['manager_name'] = "";
+        if ($this->client_id)
+        {
+            $client_name = User::find($this->client_id)->name;
+            $custom_paramaters['client_name'] = $client_name;
+        }
+        else
+            $custom_paramaters['client_name'] = "";
+        if ($this->status)
+            $custom_paramaters['status_name'] = $this->status;
+        else
+            $custom_paramaters['status_name'] = "";
 
 
         return $this->builder()

@@ -38,7 +38,18 @@
                     <h4 class="page-title">Liste des commandes</h4>
                     <p>Filtres appliqués :</p>
                     <ul>
-                        <li>Donneur d'ordre : {{ Auth::user()->name }}</li>
+                        @if ($dataTable->getOptions()['custom_paramaters']['manager_name'])
+                            <li>Gestionnaire de commande : {{ $dataTable->getOptions()['custom_paramaters']['manager_name'] }}</li>
+                        @endif
+                        @if ($dataTable->getOptions()['custom_paramaters']['client_name'])
+                            <li>Donneur d'ordre : {{ $dataTable->getOptions()['custom_paramaters']['client_name'] }}</li>
+                        @endif
+                        @if ($dataTable->getOptions()['custom_paramaters']['status_name'])
+                            <li>Statut de commande : {{ $dataTable->getOptions()['custom_paramaters']['status_name'] }}</li>
+                        @endif
+                        @if (!$dataTable->getOptions()['custom_paramaters']['status_name'] and !$dataTable->getOptions()['custom_paramaters']['client_name'] and !$dataTable->getOptions()['custom_paramaters']['status_name'])
+                            <li>Aucun</li>
+                        @endif
                     </ul>
                 </div>
             </div>

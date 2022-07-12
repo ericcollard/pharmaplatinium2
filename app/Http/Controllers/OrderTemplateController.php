@@ -12,31 +12,86 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderTemplateController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(OrderTemplatesDataTable $dataTable) // list of order templates
+    public function index(OrderTemplatesDataTable $dataTable)
+    {
+        if (array_key_exists('from', request()->all()))
+        {
+            $manager_id = request()->from;
+            return $this->listOfOrderTemplate($dataTable,"",$manager_id);
+        }
+        return $this->listOfOrderTemplate($dataTable);
+    }
+
+
+
+    public function listOfOrderTemplate(OrderTemplatesDataTable $dataTable, $status="",$manager_id="") // list of order templates
     {
         $listType = "template";
         $dataTable->with('listType', $listType); // pour utiliser le même datatable en 2 versions (template ou user)
 
-
-        $manager = "";
-        if(array_key_exists('from', request()->all()))
+        if ($manager_id == "")
         {
-            $manager_id = request()->from;
+            // par défaut, on affiche les modèles du gestionnaire connecté
+            if (Auth::check())
+            {
+                $managerUser = User::where('id', Auth::user()->id)
+                    ->firstOrFail();
+                $dataTable->with('manager', $managerUser);
+            }
+        }
+        elseif ($manager_id == "all")
+        {
+            $dataTable->with('manager', null);
+        }
+        else
+        {
             $managerUser = User::where('id', $manager_id)
                 ->firstOrFail();
             $dataTable->with('manager', $managerUser);
         }
 
 
+        if ($status == "" and array_key_exists('status', request()->all()))
+        {
+            $status = request()->status;
+        }
+        $dataTable->with('status', $status);
+
         $managers = User::whereHas('brands')->get();
         $dataTable->with('managers', $managers);
         return $dataTable->render('ordertemplates.index');
     }
+
+    public function listOfDraftOrderTemplate(OrderTemplatesDataTable $dataTable)
+    {
+        return $this->listOfOrderTemplate($dataTable,"Brouillon");
+    }
+
+    public function listOfOpenedOrderTemplate(OrderTemplatesDataTable $dataTable)
+    {
+        return $this->listOfOrderTemplate($dataTable,"Ouverte");
+    }
+    public function listOfClosedOrderTemplate(OrderTemplatesDataTable $dataTable)
+    {
+        return $this->listOfOrderTemplate($dataTable,"Fermée");
+    }
+    public function listOfDeliveredOrderTemplate(OrderTemplatesDataTable $dataTable)
+    {
+        return $this->listOfOrderTemplate($dataTable,"Livrée");
+    }
+
+    public function listOfAllOrderTemplate(OrderTemplatesDataTable $dataTable)
+    {
+        return $this->listOfOrderTemplate($dataTable,"","all");
+    }
+
+
 
     public function listOfOrder(OrderTemplatesDataTable $dataTable, $status="")
     {

@@ -40,8 +40,15 @@
                     <ul>
                         @if ($dataTable->getOptions()['custom_paramaters']['manager_name'])
                             <li>Gestionnaire de commande : {{ $dataTable->getOptions()['custom_paramaters']['manager_name'] }}</li>
-                        @else
-                            <p>Aucun</p>
+                        @endif
+                        @if ($dataTable->getOptions()['custom_paramaters']['client_name'])
+                            <li>Donneur d'ordre : {{ $dataTable->getOptions()['custom_paramaters']['client_name'] }}</li>
+                        @endif
+                        @if ($dataTable->getOptions()['custom_paramaters']['status_name'])
+                            <li>Statut de commande : {{ $dataTable->getOptions()['custom_paramaters']['status_name'] }}</li>
+                        @endif
+                            @if (!$dataTable->getOptions()['custom_paramaters']['manager_name'] and !$dataTable->getOptions()['custom_paramaters']['client_name'] and !$dataTable->getOptions()['custom_paramaters']['status_name'])
+                                <li>Aucun</li>
                         @endif
                     </ul>
                 </div>
