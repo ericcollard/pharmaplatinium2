@@ -74,9 +74,6 @@
                             <a href="{{ route('order.closedOrders') }}">Commandes Fermées</a>
                         </li>
                         <li>
-                            <a href="{{ route('order.deliveredOrders') }}">Commandes Livrées</a>
-                        </li>
-                        <li>
                             <a href="{{ route('order.index') }}">Toutes</a>
                         </li>
                     </ul>

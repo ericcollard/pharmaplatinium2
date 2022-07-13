@@ -183,6 +183,23 @@ class OrderTemplateController extends Controller
     }
 
     /**
+     * Remove all lines for one user
+     *
+     * @param  \App\Models\OrderTemplate  $orderTemplate
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy_for_user(OrderTemplate $orderTemplate)
+    {
+        $orders = Order::where('user_id','=',auth()->user()->id)
+            ->join('order_template_contents', 'order_template_contents.id', '=', 'orders.ordertemplatecontent_id')
+            ->where('user_id','=',auth()->user()->id)
+            ->where('order_template_contents.ordertemplate_id','=',$orderTemplate->id)
+            ->delete();
+
+        return redirect(route('order.index'))->with( ['message' => 'Commande supprimée', 'alert' => 'success']);
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -329,17 +346,6 @@ class OrderTemplateController extends Controller
     {
         $orderTemplate->delete();
         return redirect(route('orderTemplate.list'))->with( ['message' => 'Fiche supprimée', 'alert' => 'success']);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\OrderTemplate  $orderTemplate
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy_for_user(OrderTemplate $orderTemplate)
-    {
-        //
     }
 
 

@@ -1,6 +1,5 @@
 <td class="table-action">
-    <a href="{{ route('orderTemplate.show',$id) }}" class="action-icon"> <i class="mdi mdi-magnify-plus"></i></a>
-    <a href="{{ route('orderTemplate.edit',$id) }}" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+    <a href="{{ route('orderTemplate.show',$id) }}" class="action-icon"> <i class="mdi mdi-magnify"></i></a>
     <form id="delete-{{ $id }}" method="POST" action="{{ route('orderTemplate.destroy',$id) }}" class="d-sm-inline-block action-icon">
         {{ csrf_field() }}
         {{ method_field('DELETE') }}

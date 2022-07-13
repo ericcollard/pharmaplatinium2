@@ -151,11 +151,12 @@
                                         <td class="table-action">
                                             <a href="{{ route('orderTemplateContent.edit',$orderTemplateContentItem) }}" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
                                             <a href="{{ route('orderTemplateContent.duplicate',$orderTemplateContentItem) }}" class="action-icon"> <i class="mdi mdi-content-duplicate"></i></a>
-                                            <form id="delete-{{ $index }}" method="POST" action="{{ route('orderTemplateContent.destroy',$orderTemplateContentItem) }}" class="d-sm-inline-block action-icon">
+                                            <form class="delete d-sm-inline-block action-icon" action="{{ route('orderTemplateContent.destroy',$orderTemplateContentItem) }}" method="POST">
+                                                <input type="hidden" name="_method" value="DELETE">
                                                 {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
-                                                <a href="javascript:{}" onclick="document.getElementById('delete-{{ $index }}').submit(); return false;" style="color: inherit;"><i class="mdi mdi-delete"></i></a>
+                                                <button type="submit" class="btn btn-default btn-lg" style="color: inherit;"><i class="mdi mdi-delete"></i></button>
                                             </form>
+
                                         </td>
 
                                     </tr>
@@ -202,4 +203,16 @@
 
     </div> <!-- container -->
 @endsection
+
+
+@section('script-bottom')
+
+    <script>
+        $(".delete").on("submit", function(){
+            return confirm("Etes vous sur de vouloir supprimer cette ligne de commande ? Cela entrainera la suppression des commandes éventuellement passées par les pharmacies sur cette référence.");
+        });
+    </script>
+@endsection
+
+
 
