@@ -51,7 +51,7 @@
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="mb-1"><span class="header-title">Donneur d'ordre : </span> <span class="text-muted">Pharmacie {{ Auth::user()->name }}</span></div>
+                                <div class="mb-1"><span class="header-title">Donneur d'ordre : </span> <span class="text-muted">{{ Auth::user()->name }}</span></div>
                                 <div class="mb-1"><span class="header-title">Date de cloture : </span> <span class="text-muted">{{ $orderTemplate->dead_line->formatLocalized('%d %B %Y') }}</span></div>
                                 <div class="header-title">Commentaire</div>
                                 <div class="text-muted  mb-1">
@@ -64,7 +64,7 @@
                                 <div class="mb-1"><span class="header-title">Montant commande groupée: </span> <span {!! $orderTemplate->totalValue() >=  $orderTemplate->franco ? 'style="color : green"' : 'style="color : red"' !!}>{{ number_format($orderTemplate->totalValue(),2).'€' }}</span></div>
                                 <div class="mb-1"><span class="header-title">Valeur du franco : </span> <span class="text-muted">{{ !is_null($orderTemplate->franco) ? number_format($orderTemplate->franco,2).'€'  : 'nc' }}</span></div>
                                 <div class="mb-1"><span class="header-title">Statut : </span> <span class="text-muted">{{ $orderTemplate->status }}</span></div>
-                                <div class="mb-1"><span class="header-title">Gestionnaire : </span> <span class="text-muted">Pharmacie {{ $orderTemplate->brand->manager->name }}</span></div>
+                                <div class="mb-1"><span class="header-title">Gestionnaire : </span> <span class="text-muted">{{ $orderTemplate->brand->manager->name }}</span></div>
                                 <div class="mb-1"><span class="header-title">Livraison multiple : </span>{!! $orderTemplate->multi_deliveries == 1 ? '<i class="mdi mdi-checkbox-marked-outline mdi-18px"></i>'  : '<i class="mdi mdi-checkbox-blank-outline mdi-18px"></i>' !!} <span class="text-muted">(fonctionnalité non active)</span></div>
                             </div> <!-- end col-->
                         </div> <!-- end row -->

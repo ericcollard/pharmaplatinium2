@@ -59,7 +59,7 @@ class OrderTemplatesDataTable extends DataTable
             $builder->join('brands','brands.id','=','order_templates.brand_id')->where('brands.manager_id',$this->manager->id);
         if ($this->client_id)
             $builder->join('order_template_contents','order_template_contents.ordertemplate_id','=','order_templates.id')
-                ->join('orders','order_template_contents.id','=','orders.ordertemplatecontent_id')
+                ->leftJoin('orders','order_template_contents.id','=','orders.ordertemplatecontent_id')
                 ->where('orders.user_id','=',$this->client_id);
         if ($this->status)
             $builder->where('status','=',$this->status);
@@ -176,7 +176,7 @@ class OrderTemplatesDataTable extends DataTable
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('Bfrtip')
-            ->orderBy(4,'desc')
+            ->orderBy(4,'asc')
             ->parameters([
                 'language' => [
                     'url' => url('/vendor/datatables/lang/'.config('locale.languages')[session ('locale')][1].'.json'),//<--here

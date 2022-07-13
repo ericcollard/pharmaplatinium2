@@ -30,7 +30,7 @@
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="mb-1"><span class="header-title">Gestionnaire : </span> <span class="text-muted">Pharmacie {{ $orderTemplate->brand->manager->name }}</span></div>
+                                <div class="mb-1"><span class="header-title">Gestionnaire : </span> <span class="text-muted">{{ $orderTemplate->brand->manager->name }}</span></div>
                                 <div class="mb-1"><span class="header-title">Date de cloture : </span> <span class="text-muted">{{ $orderTemplate->dead_line->formatLocalized('%d %B %Y') }}</span></div>
 
                             </div> <!-- end col-->
@@ -62,6 +62,7 @@
 
                         <div class="row">
                             <div class="col-sm-6">
+                                <div class="mb-1"><span class="header-title">LIEN commande : </span> <span class="text-muted"><a href="{{ route('order.edit' , ['orderTemplate' => $orderTemplate]) }}">{{ route('order.edit' , ['orderTemplate' => $orderTemplate]) }}</a></span></div>
                                 <div class="header-title">Commentaire</div>
                                 <div class="text-muted  mb-1">
                                     {!! $orderTemplate->comment ?: 'nc' !!}
