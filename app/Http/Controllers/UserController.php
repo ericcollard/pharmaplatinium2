@@ -29,11 +29,21 @@ class UserController extends Controller
      * Display a listing of the resource.
      *
      */
-
     public function index(UsersDataTable $dataTable)
     {
         return $dataTable->render('users.index');
     }
+
+    /**
+     * Display a listing of emails
+     *
+     */
+    public function emails()
+    {
+        $users = User::all();
+        return view('users.emails', ['users' => $users]);
+    }
+
 
     /**
      * Store a new value for avatar

@@ -25,6 +25,7 @@ require __DIR__ . '/auth.php';
 Route::get('/', [MainController::class, 'landing'])->name('landing');
 Route::get('/home', [MainController::class, 'home'])->name('home');
 Route::get('/users', [UserController::class, 'index'])->name('user.list')->middleware('auth');
+Route::get('/users/emails', [UserController::class, 'emails'])->name('user.emails')->middleware('auth');
 Route::get('/users/jsonIndex', [UserController::class, 'jsonIndex'])->name('user.jsonIndex')->middleware('auth');
 Route::get('/users/{user}', [UserController::class, 'show'])->name('user.show')->middleware('auth');
 Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit')->middleware('auth');

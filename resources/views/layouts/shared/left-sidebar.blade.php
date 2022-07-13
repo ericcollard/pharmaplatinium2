@@ -93,6 +93,11 @@
                             <a href="{{ route('user.list') }}">Pharmacies</a>
                         </li>
                         <li>
+                            <a href="{{ route('user.emails') }}">Liste des emails</a>
+                        </li>
+
+
+                        <li>
                             <a href="{{ route('brand.list') }}">Laboratoires</a>
                         </li>
                     </ul>
