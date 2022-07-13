@@ -360,5 +360,15 @@ class OrderTemplateController extends Controller
         return redirect(route('orderTemplate.list'))->with( ['message' => 'Commande dupliquée', 'alert' => 'success']);
     }
 
+    /**
+     * Print the specified resource
+     *
+     * @param  \App\Models\OrderTemplate  $orderTemplate
+     * @return \Illuminate\Http\Response
+     */
+    public function print(OrderTemplate $orderTemplate)
+    {
 
+        return view('ordertemplates.print', compact('orderTemplate'));
+    }
 }

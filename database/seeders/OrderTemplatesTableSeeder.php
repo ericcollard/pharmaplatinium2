@@ -45,6 +45,19 @@ class OrderTemplatesTableSeeder extends Seeder
                 'created_at' => '2022-07-13 12:53:28',
                 'updated_at' => '2022-07-13 13:23:04',
             ),
+            2 => 
+            array (
+                'id' => 3,
+                'title' => 'Commande hivers 2022',
+                'dead_line' => '2022-11-13 18:54:14',
+                'franco' => 2500.0,
+                'brand_id' => 6,
+                'comment' => '<p>Commande de r&eacute;assort pour livraison d&eacute;but Septembre 2022. Commande suivante pr&eacute;vue courant Novembre 2022</p>',
+                'status' => 'Brouillon',
+                'multi_deliveries' => 0,
+                'created_at' => '2022-07-13 18:54:14',
+                'updated_at' => '2022-07-13 18:54:57',
+            ),
         ));
         
         

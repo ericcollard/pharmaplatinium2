@@ -24,10 +24,10 @@ class OrdersTableSeeder extends Seeder
                 'id' => 1,
                 'ordertemplatecontent_id' => 1,
                 'user_id' => 1,
-                'qty' => 40,
+                'qty' => 1000,
                 'comment' => 'user 1, otc 1',
                 'created_at' => NULL,
-                'updated_at' => '2022-07-13 13:41:48',
+                'updated_at' => '2022-07-13 17:22:34',
             ),
             1 => 
             array (
