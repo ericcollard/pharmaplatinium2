@@ -36,6 +36,22 @@ class OrderTemplateContentController extends Controller
     }
 
     /**
+     * Duplicate a resource
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function duplicate(OrderTemplateContent $orderTemplateContent)
+    {
+        $newOrderTemplateContent =$orderTemplateContent->replicate();
+        $newOrderTemplateContent->created_at = now();
+        $newOrderTemplateContent->save();
+
+        return redirect($orderTemplateContent->orderTemplate->path())->with( ['message' => 'Ligne dupliquée', 'alert' => 'success']);
+    }
+
+
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

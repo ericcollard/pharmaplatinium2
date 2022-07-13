@@ -60,11 +60,12 @@ class OrderTemplatesDataTable extends DataTable
         if ($this->client_id)
             $builder->join('order_template_contents','order_template_contents.ordertemplate_id','=','order_templates.id')
                 ->join('orders','order_template_contents.id','=','orders.ordertemplatecontent_id')
-                ->where('orders.user_id','=',$this->client_id)
-                ->select('order_templates.*')->distinct();
+                ->where('orders.user_id','=',$this->client_id);
         if ($this->status)
             $builder->where('status','=',$this->status);
 
+
+        $builder->select('order_templates.*')->distinct();
         return $builder;
     }
 

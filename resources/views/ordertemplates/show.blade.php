@@ -149,6 +149,7 @@
 
                                         <td class="table-action">
                                             <a href="{{ route('orderTemplateContent.edit',$orderTemplateContentItem) }}" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                            <a href="{{ route('orderTemplateContent.duplicate',$orderTemplateContentItem) }}" class="action-icon"> <i class="mdi mdi-content-duplicate"></i></a>
                                             <form id="delete-{{ $index }}" method="POST" action="{{ route('orderTemplateContent.destroy',$orderTemplateContentItem) }}" class="d-sm-inline-block action-icon">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
