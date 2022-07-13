@@ -173,12 +173,27 @@
                                 </tbody>
                             </table>
                             </div>
-
-                                <div class="form-group mb-3">
-                                    <button id="btn_submit" type="submit" class="btn btn-primary">{{ __('Update') }}</button>
+                                <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group mb-3">
+                                        <button id="btn_submit" type="submit" class="btn btn-primary">{{ __('Update') }}</button>
+                                    </div>
+                            </form>
+                                </div>
+                                <div class="col-6 text-end"  >
+                                    <div class="form-group mb-3">
+                                        <form class="deleteconfirm d-sm-inline-block action-icon" action="{{ route('order.destroy',$orderTemplate->id) }}" method="POST" onsubmit="return confirm('Etes vous sur de vouloir supprimer votre commande ?')">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            {{ csrf_field() }}
+                                            <button id="btn_submit" type="submit" class="btn btn-danger">Supprimer la commande</button>
+                                        </form>
+                                    </div>
+                                </div>
                                 </div>
 
-                            </form>
+
+
+
 
 
                         @endif

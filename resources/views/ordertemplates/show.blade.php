@@ -41,9 +41,10 @@
                                 <div class="text-center mt-sm-0 mt-3 text-sm-end">
 
                                     @can ('delete', $orderTemplate)
-                                        <form class="d-sm-inline-block" method="POST" action="{{ route('orderTemplate.destroy',['orderTemplate' => $orderTemplate]) }}">
+                                        <form class="d-sm-inline-block" method="POST" action="{{ route('orderTemplate.destroy',['orderTemplate' => $orderTemplate]) }}"
+                                              onsubmit="return confirm('Etes vous sur de vouloir supprimer cette commande ? Cela entrainera la suppression des commandes éventuellement passées par les pharmacies sur les références considérées.')">
                                             {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
+                                            <input type="hidden" name="_method" value="DELETE">
                                             <button type="submit" class="btn btn-danger"> {{ __('Delete') }}</button>
                                         </form>
                                     @endcan

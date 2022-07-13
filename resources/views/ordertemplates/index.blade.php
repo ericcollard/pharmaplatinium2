@@ -75,12 +75,12 @@
 
 @section('script-bottom')
 
-    <!-- third party js -->
-
     <script src="{{asset('assets/libs/datatables/datatables.min.js')}}"></script>
     <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
     <!-- third party js ends -->
     {{$dataTable->scripts()}}
+
+
 
 @endsection
 
