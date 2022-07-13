@@ -58,6 +58,20 @@ class OrderTemplateContentController extends Controller
         try {
 
             $data = $request->all();
+
+            if(!array_key_exists('demi_package', $data))
+            {
+                $data['demi_package'] = 0;
+            }
+            if(!array_key_exists('free', $data))
+            {
+                $data['free'] = 0;
+            }
+            if(!array_key_exists('multi_delivery', $data))
+            {
+                $data['multi_delivery'] = 0;
+            }
+
             $orderTemplateContent = OrderTemplateContent::create($data);
 
         } catch (\Exception $e) {
@@ -89,6 +103,7 @@ class OrderTemplateContentController extends Controller
     {
         $action = URL::route('orderTemplateContent.update',['orderTemplateContent' => $orderTemplateContent]);
         $method = 'PATCH';
+
         return view('ordertemplatecontents.edit', compact('action', 'method','orderTemplateContent'));
     }
 
@@ -112,10 +127,20 @@ class OrderTemplateContentController extends Controller
                 'package_qty' =>  'required|numeric',
             ]
         );
-
-
-
         $data = request()->all();
+
+        if(!array_key_exists('demi_package', $data))
+        {
+            $data['demi_package'] = 0;
+        }
+        if(!array_key_exists('free', $data))
+        {
+            $data['free'] = 0;
+        }
+        if(!array_key_exists('multi_delivery', $data))
+        {
+            $data['multi_delivery'] = 0;
+        }
 
         $orderTemplateContent->update($data);
         return redirect($orderTemplateContent->orderTemplate->path())->with( ['message' => 'Ligne créé', 'alert' => 'success']);

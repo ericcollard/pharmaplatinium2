@@ -305,6 +305,10 @@ class OrderTemplateController extends Controller
         );
 
         $data = request()->all();
+        if(!array_key_exists('multi_deliveries', $data))
+        {
+            $data['multi_deliveries'] = 0;
+        }
 
         $orderTemplate->update($data);
 

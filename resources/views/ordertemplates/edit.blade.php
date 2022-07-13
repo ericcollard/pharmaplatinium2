@@ -137,20 +137,18 @@
                                     <option value='Ouverte' {{ $orderTemplate->status ? ($orderTemplate->status == 'Ouverte' ? 'selected' : '') : ( old('status') == 'Ouverte' ? 'selected' : '') }}>Ouverte</option>
                                     <option value='Fermée' {{ $orderTemplate->status ? ($orderTemplate->status == 'Fermée' ? 'selected' : '') : ( old('status') == 'Fermée' ? 'selected' : '') }}>Fermée</option>
                                 </select>
-
-
                             </div>
 
-                            <div class="col-lg-3 mb-3 position-relative">
 
-                                <div class="form-check form-switch">
+                            <div class="col-lg-3 mb-3 d-flex align-items-center">
+                                <div class="form-check form-switch mt-3">
                                     <input class="form-check-input" type="checkbox" id="multi_deliveries" name="multi_deliveries"
                                            value="1"
-                                           {{ $orderTemplate->multi_deliveries === '1' ? 'checked' :''}}
-                                    <label class="form-check-label" for="multi_deliveries">Livraisons multiples possibles ?</label>
+                                        {{ $orderTemplate->multi_deliveries == '1' ? 'checked' :''}}>
+                                    <label class="form-check-label" for="multi_deliveries">Livraison multiple possibles ?</label>
                                 </div>
-
                             </div>
+
 
                         </div>
 
