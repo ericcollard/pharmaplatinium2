@@ -45,8 +45,6 @@
             <div class="mb-1"><span class="header-title">Valeur du franco : </span> {{ !is_null($orderTemplate->franco) ? number_format($orderTemplate->franco,2).'€'  : 'nc' }}</div>
         </div> <!-- end col-->
 
-
-
         <div class="col-sm-12">
 
 

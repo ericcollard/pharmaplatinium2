@@ -53,6 +53,7 @@ Route::get('/ordertemplate/{orderTemplate}', [OrderTemplateController::class, 's
 Route::get('/ordertemplate/{orderTemplate}/edit', [OrderTemplateController::class, 'edit'])->name('orderTemplate.edit')->middleware('auth');
 Route::get('/ordertemplate/{orderTemplate}/duplicate', [OrderTemplateController::class, 'duplicate'])->name('orderTemplate.duplicate')->middleware('auth');
 Route::get('/ordertemplate/{orderTemplate}/print', [OrderTemplateController::class, 'print'])->name('orderTemplate.print')->middleware('auth');
+Route::get('/ordertemplate/{orderTemplate}/print2', [OrderTemplateController::class, 'print2'])->name('orderTemplate.print2')->middleware('auth');
 Route::patch('/ordertemplate/{orderTemplate}',[OrderTemplateController::class, 'update'])->name('orderTemplate.update');
 Route::post('/ordertemplate',[OrderTemplateController::class, 'store'])->name('orderTemplate.store');
 Route::delete('/ordertemplate/{orderTemplate}',[OrderTemplateController::class, 'destroy'])->name('orderTemplate.destroy');

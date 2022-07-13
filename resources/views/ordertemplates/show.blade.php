@@ -68,7 +68,12 @@
                                     @can ('print', $orderTemplate)
                                         <button type="button" class="btn btn-primary mx-1 mb-1">
                                             <a href="{{ route('orderTemplate.print' , ['orderTemplate' => $orderTemplate]) }}" style="color: inherit">
-                                                <i class="mdi mdi-content-duplicate me-1"></i> Imprimer
+                                                <i class="mdi mdi-printer me-1"></i> Par produit
+                                            </a>
+                                        </button>
+                                        <button type="button" class="btn btn-primary mx-1 mb-1">
+                                            <a href="{{ route('orderTemplate.print2' , ['orderTemplate' => $orderTemplate]) }}" style="color: inherit">
+                                                <i class="mdi mdi-printer me-1"></i> par Pharmacie
                                             </a>
                                         </button>
                                     @endcan
@@ -193,7 +198,7 @@
                                                     <tbody>
                                                     @foreach($orderTemplateContentItem->orders as $index => $orderItem)
                                                         <tr>
-                                                            <th scope="col">{{ $orderItem->pharmacy->name }}</th>
+                                                            <td>{{ $orderItem->pharmacy->name }}</td>
                                                             <td>{{ $orderItem->qty }}</td>
                                                             <td><a href="#" data-bs-html="true"  data-bs-toggle="tooltip" title="{{ $orderItem->comment }}">{!! Str::limit($orderItem->comment , 20, ' ...')  !!}</a></td>
                                                         </tr>

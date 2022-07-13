@@ -11,6 +11,7 @@ use App\Models\User;
 use DateInterval;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Validation\Rule;
 
@@ -361,14 +362,37 @@ class OrderTemplateController extends Controller
     }
 
     /**
-     * Print the specified resource
+     * Print the specified resourceordertemplatecontent_id
      *
      * @param  \App\Models\OrderTemplate  $orderTemplate
      * @return \Illuminate\Http\Response
      */
     public function print(OrderTemplate $orderTemplate)
     {
-
         return view('ordertemplates.print', compact('orderTemplate'));
+    }
+
+    public function print2(OrderTemplate $orderTemplate)
+    {
+        $orders = DB::table('users')
+            ->join('orders','orders.user_id','=','users.id')
+            ->join('order_template_contents','order_template_contents.id','=','orders.ordertemplatecontent_id')
+            ->where('order_template_contents.ordertemplate_id','=', $orderTemplate->id)
+            ->select('users.name as username','orders.qty','order_template_contents.name','order_template_contents.ean','order_template_contents.variant')
+        ->get()->groupBy('username');
+
+/*
+        foreach($orders as $key=>$order)
+        {
+            foreach($order as $orderLine)
+            {
+                dd($orderLine->qty);
+            }
+            //dd($key, $order);
+        }
+*/
+
+
+        return view('ordertemplates.print2', compact('orders','orderTemplate'));
     }
 }
