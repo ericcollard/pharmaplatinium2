@@ -42,9 +42,7 @@ class OrderTemplateContentController extends Controller
      */
     public function duplicate(OrderTemplateContent $orderTemplateContent)
     {
-        $newOrderTemplateContent =$orderTemplateContent->replicate();
-        $newOrderTemplateContent->created_at = now();
-        $newOrderTemplateContent->save();
+        $newOrderTemplateContent =$orderTemplateContent->duplicate();
 
         return redirect($orderTemplateContent->orderTemplate->path())->with( ['message' => 'Ligne dupliquée', 'alert' => 'success']);
     }

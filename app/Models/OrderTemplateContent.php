@@ -76,5 +76,14 @@ class OrderTemplateContent extends Model
         }
     }
 
+    public function duplicate($orderTemplateId = 0)
+    {
+        $newOrderTemplateContent =$this->replicate();
+        $newOrderTemplateContent->created_at = now();
+        if ($orderTemplateId > 0) $newOrderTemplateContent->ordertemplate_id = $orderTemplateId;
+        $newOrderTemplateContent->save();
+        return $newOrderTemplateContent;
+    }
+
 
 }

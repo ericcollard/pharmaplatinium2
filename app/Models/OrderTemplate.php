@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use DateInterval;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -67,5 +68,22 @@ class OrderTemplate extends Model
     public function path()
     {
         return route('orderTemplate.show', $this);
+    }
+
+    public function duplicate()
+    {
+        $newOrderTemplate =$this->replicate();
+        $newOrderTemplate->created_at = now();
+        $newOrderTemplate->dead_line = date_add(now(),DateInterval::createFromDateString('1 month'));
+        $newOrderTemplate->title = 'Copie de '.$newOrderTemplate->title;
+        $newOrderTemplate->status = 'Brouillon';
+        $newOrderTemplate->save();
+
+        foreach ($this->content as $item)
+        {
+            $newContent = $item->duplicate($newOrderTemplate->id);
+        }
+
+        return $newOrderTemplate;
     }
 }

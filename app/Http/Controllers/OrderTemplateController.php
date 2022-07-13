@@ -348,5 +348,17 @@ class OrderTemplateController extends Controller
         return redirect(route('orderTemplate.list'))->with( ['message' => 'Fiche supprimée', 'alert' => 'success']);
     }
 
+    /**
+     * Duplicate the specified resource
+     *
+     * @param  \App\Models\OrderTemplate  $orderTemplate
+     * @return \Illuminate\Http\Response
+     */
+    public function duplicate(OrderTemplate $orderTemplate)
+    {
+        $orderTemplate->duplicate();
+        return redirect(route('orderTemplate.list'))->with( ['message' => 'Commande dupliquée', 'alert' => 'success']);
+    }
+
 
 }

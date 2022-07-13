@@ -41,7 +41,7 @@
                                 <div class="text-center mt-sm-0 mt-3 text-sm-end">
 
                                     @can ('delete', $orderTemplate)
-                                        <form class="d-sm-inline-block" method="POST" action="{{ route('orderTemplate.destroy',['orderTemplate' => $orderTemplate]) }}"
+                                        <form class="d-sm-inline-block m-lg-2" method="POST" action="{{ route('orderTemplate.destroy',['orderTemplate' => $orderTemplate]) }}"
                                               onsubmit="return confirm('Etes vous sur de vouloir supprimer cette commande ? Cela entrainera la suppression des commandes éventuellement passées par les pharmacies sur les références considérées.')">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="DELETE">
@@ -55,6 +55,14 @@
                                             <i class="mdi mdi-account-edit me-1"></i> Mise à jour
                                         </a>
                                     </button>
+                                    @endcan
+
+                                    @can ('duplicate', $orderTemplate)
+                                        <button type="button" class="btn btn-success m-lg-2">
+                                            <a href="{{ route('orderTemplate.duplicate' , ['orderTemplate' => $orderTemplate]) }}" style="color: inherit">
+                                                <i class="mdi mdi-content-duplicate me-1"></i> Dupliquer
+                                            </a>
+                                        </button>
                                     @endcan
 
                                 </div>
