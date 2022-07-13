@@ -154,6 +154,7 @@ class OrderTemplateContentController extends Controller
      */
     public function destroy(OrderTemplateContent $orderTemplateContent)
     {
-        //
+        $orderTemplateContent->delete();
+        return redirect($orderTemplateContent->orderTemplate->path())->with( ['message' => 'Ligne supprimée', 'alert' => 'success']);
     }
 }

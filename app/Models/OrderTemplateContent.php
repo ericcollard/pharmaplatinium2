@@ -30,7 +30,19 @@ class OrderTemplateContent extends Model
         'free_stp',
         'free_qty',
         'comment',
-];
+    ];
+
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($orderTemplateContent)
+        {
+            $orderTemplateContent->orders->each->delete();
+        });
+    }
+
 
     public function orderTemplate()
     {

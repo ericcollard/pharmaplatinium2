@@ -204,8 +204,12 @@ class OrderTemplateController extends Controller
                 $order_id = $keys[0];
                 $colisage = $keys[1];
                 $ean = $keys[2];
+                $demi = $keys[3];
                 $orders_array[] = ['order_id' => $order_id,  'colisage' => $colisage, 'ean'  => $ean, 'qty' => $item];
-                $arr_validation[$key] = 'multiple_of:'.$colisage;
+                if ($demi == 1)
+                    $arr_validation[$key] = 'multiple_of:'.$colisage/2;
+                else
+                    $arr_validation[$key] = 'multiple_of:'.$colisage;
             }
         }
 

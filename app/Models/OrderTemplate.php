@@ -35,6 +35,17 @@ class OrderTemplate extends Model
         'dead_line' => 'datetime',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($orderTemplate)
+        {
+            $orderTemplate->content->each->delete();
+        });
+    }
+
+
     public function brand()
     {
         return $this->belongsTo(Brand::class,'brand_id');

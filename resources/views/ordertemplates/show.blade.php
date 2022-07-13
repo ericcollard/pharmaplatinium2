@@ -73,7 +73,7 @@
                                 <div class="mb-1"><span class="header-title">Montant de la commande : </span> <span {!! $orderTemplate->totalValue() >=  $orderTemplate->franco ? 'style="color : green"' : 'style="color : red"' !!}>{{ number_format($orderTemplate->totalValue(),2).'€' }}</span></div>
                                 <div class="mb-1"><span class="header-title">Valeur du franco : </span> <span class="text-muted">{{ !is_null($orderTemplate->franco) ? number_format($orderTemplate->franco,2).'€'  : 'nc' }}</span></div>
                                 <div class="mb-1"><span class="header-title">Statut : </span> <span class="text-muted">{{ $orderTemplate->status }}</span></div>
-
+                                <div class="mb-1"><span class="header-title">Livraison multiple : </span>{!! $orderTemplate->multi_deliveries == 1 ? '<i class="mdi mdi-checkbox-marked-outline mdi-18px"></i>'  : '<i class="mdi mdi-checkbox-blank-outline mdi-18px"></i>' !!} <span class="text-muted">(fonctionnalité non active)</span></div>
                             </div> <!-- end col-->
                         </div> <!-- end row -->
 
@@ -113,11 +113,12 @@
                                     <th scope="col">Variante</th>
                                     <th scope="col">Prix</th>
                                     <th scope="col">Prix palier</th>
-                                    <th scope="col">Palier</th>
+                                    <th scope="col">Qté Palier</th>
                                     <th scope="col">Colisage</th>
+                                    <th scope="col">1/2 colis</th>
                                     <th scope="col">Qté totale</th>
                                     <th scope="col">Sous total</th>
-                                    <th scope="col">Comment</th>
+                                    <th scope="col">Commentaire</th>
                                     <th scope="col"></th>
                                 </tr>
                                 </thead>
@@ -130,13 +131,20 @@
                                         <th scope="row">{{ $orderTemplateContentItem->ean }}</th>
                                         <td>{{ $orderTemplateContentItem->name }}</td>
                                         <td>{{ $orderTemplateContentItem->variant }}</td>
-                                        <td {!! $totalQty <  $orderTemplateContentItem->step_value ? 'style="color : red; font-weight: bold"' : 'style="text-decoration: line-through"' !!}  >{{ !is_null($orderTemplateContentItem->price) ? number_format($orderTemplateContentItem->price,2).'€'  : 'nc' }}</td>
-                                        <td {!! $totalQty >=  $orderTemplateContentItem->step_value ? 'style="color : green; font-weight: bold"' : 'style="text-decoration: line-through"' !!}  >{{ !is_null($orderTemplateContentItem->step_price) ? number_format($orderTemplateContentItem->step_price,2).'€'  : 'nc' }}</td>
+                                        <td {!! $totalQty <  $orderTemplateContentItem->step_value ? 'style="color : red; font-weight: bold"' : 'style="text-decoration: line-through"' !!}  >
+                                            {{ !is_null($orderTemplateContentItem->price) ?
+                                                number_format($orderTemplateContentItem->price*(1-$orderTemplateContentItem->discount),2).'€ (-'.number_format($orderTemplateContentItem->discount*100,2).'%)'
+                                                : 'nc' }}
+                                        </td>
+                                        <td {!! $totalQty >=  $orderTemplateContentItem->step_value ? 'style="color : green; font-weight: bold"' : 'style="text-decoration: line-through"' !!}>
+                                            {{ !is_null($orderTemplateContentItem->step_price) ? number_format($orderTemplateContentItem->step_price,2).'€'  : 'nc' }}
+                                        </td>
                                         <td>{{ !is_null($orderTemplateContentItem->step_value) ? number_format($orderTemplateContentItem->step_value,0)  : 'nc' }}</td>
                                         <td>{{ !is_null($orderTemplateContentItem->package_qty) ? number_format($orderTemplateContentItem->package_qty,0)  : 'nc' }}</td>
+                                        <td>{!! $orderTemplateContentItem->demi_package == 1 ? '<i class="mdi mdi-checkbox-marked-outline mdi-18px"></i>'  : '<i class="mdi mdi-checkbox-blank-outline mdi-18px"></i>' !!}</td>
                                         <td {!! $totalQty <  $orderTemplateContentItem->step_value ? 'style="color : red; font-weight: bold"' : 'style="color : green; font-weight: bold"' !!}  >{{ $totalQty }}</td>
                                         <td>{{ number_format($orderTemplateContentItem->totalValue(),2).'€' }}</td>
-                                        <td><a href="#" data-bs-toggle="tooltip" title="{{ $orderTemplateContentItem->comment }}">{!! Str::limit($orderTemplateContentItem->comment , 10, ' ...')  !!}</a></td>
+                                        <td><a href="#" data-bs-html="true" data-bs-toggle="tooltip" title="{{ $orderTemplateContentItem->comment }}">{!! Str::limit($orderTemplateContentItem->comment , 10, ' ...')  !!}</a></td>
 
 
                                         <td class="table-action">
@@ -167,7 +175,7 @@
                                                         <tr>
                                                             <th scope="col">{{ $orderItem->pharmacy->name }}</th>
                                                             <td>{{ $orderItem->qty }}</td>
-                                                            <td><a href="#" data-bs-toggle="tooltip" title="{{ $orderItem->comment }}">{!! Str::limit($orderItem->comment , 20, ' ...')  !!}</a></td>
+                                                            <td><a href="#" data-bs-html="true"  data-bs-toggle="tooltip" title="{{ $orderItem->comment }}">{!! Str::limit($orderItem->comment , 20, ' ...')  !!}</a></td>
                                                         </tr>
                                                     @endforeach
                                                     </tbody>

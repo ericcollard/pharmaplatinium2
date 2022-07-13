@@ -53,36 +53,6 @@
                             <div class="col-sm-6">
                                 <div class="mb-1"><span class="header-title">Donneur d'ordre : </span> <span class="text-muted">Pharmacie {{ Auth::user()->name }}</span></div>
                                 <div class="mb-1"><span class="header-title">Date de cloture : </span> <span class="text-muted">{{ $orderTemplate->dead_line->formatLocalized('%d %B %Y') }}</span></div>
-
-                            </div> <!-- end col-->
-
-                            <div class="col-sm-6">
-
-
-                                <div class="text-center mt-sm-0 mt-3 text-sm-end">
-
-                                    @can ('delete', $orderTemplate)
-                                        <form class="d-sm-inline-block" method="POST" action="{{ route('orderTemplate.destroy',['orderTemplate' => $orderTemplate]) }}">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                            <button type="submit" class="btn btn-danger"> {{ __('Delete') }}</button>
-                                        </form>
-                                    @endcan
-
-                                    @can ('update', $orderTemplate)
-                                    <button type="button" class="btn btn-warning m-lg-2">
-                                        <a href="{{ route('orderTemplate.edit' , ['orderTemplate' => $orderTemplate]) }}" style="color: inherit">
-                                            <i class="mdi mdi-account-edit me-1"></i> Mise à jour
-                                        </a>
-                                    </button>
-                                    @endcan
-
-                                </div>
-                            </div> <!-- end col-->
-                        </div> <!-- end row -->
-
-                        <div class="row">
-                            <div class="col-sm-6">
                                 <div class="header-title">Commentaire</div>
                                 <div class="text-muted  mb-1">
                                     {!! $orderTemplate->comment ?: 'nc' !!}
@@ -95,7 +65,7 @@
                                 <div class="mb-1"><span class="header-title">Valeur du franco : </span> <span class="text-muted">{{ !is_null($orderTemplate->franco) ? number_format($orderTemplate->franco,2).'€'  : 'nc' }}</span></div>
                                 <div class="mb-1"><span class="header-title">Statut : </span> <span class="text-muted">{{ $orderTemplate->status }}</span></div>
                                 <div class="mb-1"><span class="header-title">Gestionnaire : </span> <span class="text-muted">Pharmacie {{ $orderTemplate->brand->manager->name }}</span></div>
-
+                                <div class="mb-1"><span class="header-title">Livraison multiple : </span>{!! $orderTemplate->multi_deliveries == 1 ? '<i class="mdi mdi-checkbox-marked-outline mdi-18px"></i>'  : '<i class="mdi mdi-checkbox-blank-outline mdi-18px"></i>' !!} <span class="text-muted">(fonctionnalité non active)</span></div>
                             </div> <!-- end col-->
                         </div> <!-- end row -->
 
@@ -129,6 +99,7 @@
                                     <th scope="col">Produit</th>
                                     <th scope="col">Variante</th>
                                     <th scope="col">Colisage</th>
+                                    <th scope="col">1/2</th>
                                     <th scope="col">Quantité</th>
                                     <th scope="col">Sous total</th>
                                     <th scope="col">Palier</th>
@@ -148,7 +119,7 @@
                                         <?php
                                             $totalQty = $order->orderTemplateContent->totalQty();
                                             $packageQty = !is_null($order->package_qty) ? number_format($order->package_qty,0)  : 'nc';
-                                            $inpoutIndex = "#".$order->order_id."/".$packageQty."/".$order->ean;
+                                            $inpoutIndex = "#".$order->order_id."/".$packageQty."/".$order->ean."/".$order->demi_package;
                                             $orderValue+=$order->totalValue();
                                         ?>
                                     <tr>
@@ -156,6 +127,7 @@
                                         <td>{{ $order->name }}</td>
                                         <td>{{ $order->variant }}</td>
                                         <td>{{ $packageQty }}</td>
+                                        <td>{!! $order->demi_package == 1 ? '<i class="mdi mdi-checkbox-marked-outline mdi-18px"></i>'  : '<i class="mdi mdi-checkbox-blank-outline mdi-18px"></i>' !!}</td>
                                         <td >
                                             <input type="text"
                                                    class="form-control @error($inpoutIndex) is-invalid @enderror"
@@ -163,7 +135,11 @@
                                                    name="{{ $inpoutIndex }}"
                                                    value="{{ $order->qty }}"/>
                                             @error($inpoutIndex)
-                                                <div class="alert alert-danger">La quantité doit être multiple de {{ $packageQty }}</div>
+                                                @if ($order->demi_package == 1)
+                                                    <div class="alert alert-danger">La quantité doit être multiple de {{ $packageQty/2 }}</div>
+                                                @else
+                                                    <div class="alert alert-danger">La quantité doit être multiple de {{ $packageQty }}</div>
+                                                @endif
                                             @enderror
 
                                         </td>
@@ -175,10 +151,17 @@
                                                 <span class="inferior">Quantité palier<br>non atteinte</span>
                                             @endif
                                         </td>
-                                        <td {!! $totalQty <  $order->step_value ? 'style="color : red; font-weight: bold"' : 'style="text-decoration: line-through"' !!}  >{{ !is_null($order->price) ? number_format($order->price,2).'€'  : 'nc' }}</td>
+
+                                        <td {!! $totalQty <  $order->step_value ? 'style="color : red; font-weight: bold"' : 'style="text-decoration: line-through"' !!}  >
+                                            {{ !is_null($order->price) ?
+                                                number_format($order->price*(1-$order->discount),2).'€ (-'.number_format($order->discount*100,0).'%)'
+                                                : 'nc' }}
+                                        </td>
+
+
                                         <td {!! $totalQty >=  $order->step_value ? 'style="color : green; font-weight: bold"' : 'style="text-decoration: line-through"' !!}  >{{ !is_null($order->step_price) ? number_format($order->step_price,2).'€'  : 'nc' }}</td>
 
-                                        <td><a href="#" data-bs-toggle="tooltip" title="{{ $order->comment }}">{!! Str::limit($order->comment , 10, ' ...')  !!}</a></td>
+                                        <td><a href="#" data-bs-html="true"  data-bs-toggle="tooltip" title="{{ $order->comment }}">{!! Str::limit($order->comment , 10, ' ...')  !!}</a></td>
 
                                     </tr>
                                     @endforeach
