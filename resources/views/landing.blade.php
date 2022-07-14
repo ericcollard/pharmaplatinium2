@@ -31,22 +31,6 @@
             <!-- menus -->
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
-                <!-- left menu -->
-                <ul class="navbar-nav me-auto align-items-center">
-                    <li class="nav-item mx-lg-1">
-                        <a class="nav-link active" href="">Home</a>
-                    </li>
-                    <li class="nav-item mx-lg-1">
-                        <a class="nav-link" href="">Présentation</a>
-                    </li>
-                    <li class="nav-item mx-lg-1">
-                        <a class="nav-link" href="">Fonctionnalités</a>
-                    </li>
-                    <li class="nav-item mx-lg-1">
-                        <a class="nav-link" href="">Contact</a>
-                    </li>
-                </ul>
-
                 <!-- right menu -->
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item me-2">
@@ -68,21 +52,20 @@
             <div class="row align-items-center">
                 <div class="col-md-5">
                     <div class="mt-md-4">
-                        <div>
-                            <span class="badge bg-danger rounded-pill">New</span>
-                            <span class="text-white-50 ms-1">Pro access : gérez vos données techniques</span>
-                        </div>
                         <h2 class="text-white mb-4 mt-3 hero-title">
-                            La base de donnée Windfoil la plus complète au monde
+                            Pharmaplatinium : au service du GIE
                         </h2>
 
-                        <p class="mb-4 font-16 text-white">Windfoilfan est une base de donnée participative
-                            regroupant
-                            les mesures, les caractéristiques, les compte rendu de test, les performances de
-                            plus de 200 produits dédiés au windfoil.</p>
+                        <p class="mb-4 font-16 text-white">Pharmaplatinium est un outil personnalisé de gestion des
+                            commandes groupées pour les GIE pharmaceutiques.</p>
 
-                        <a href="/login" class="btn btn-success">Se connecter <i class="mdi mdi-arrow-right ms-1"></i></a>
-                        <a href="/register" class="btn btn-info">Créer un compte <i class="mdi mdi-arrow-right ms-1"></i></a>
+                        <a href="{{ route('login') }}" class="btn btn-success mt-2" style="margin-right: 1em">Se connecter <i class="mdi mdi-arrow-right ms-1"></i></a>
+                        <a href="{{ route('register') }}" class="btn btn-info mt-2" style="margin-right: 1em">Créer un compte <i class="mdi mdi-arrow-right ms-1"></i></a>
+                        <a href="{{ route('home') }}" class="btn btn-light mt-2">Juste visiter <i class="mdi mdi-arrow-right ms-1"></i></a>
+
+                        <p class="mt-4 font-16 text-white"><em>Info. En tant que simple visiteur, les fonctionnalités et données visibles seront fortement
+                                réduites. En vous connectant, vous aurez accès à l'essentiel des éléments. Créez gratuitement votre compte !</em></p>
+
                     </div>
                 </div>
                 <div class="col-md-5 offset-md-2">
@@ -95,17 +78,17 @@
     </section>
     <!-- END HERO -->
 
-    <!-- START SERVICES -->
-    <section class="py-5">
+    <!-- START PRESENTATION -->
+    <section id="presentation" class="py-5">
         <div class="container">
             <div class="row py-4">
                 <div class="col-lg-12">
                     <div class="text-center">
                         <h1 class="mt-0"><i class="mdi mdi-infinity"></i></h1>
-                        <h3>The admin is fully <span class="text-primary">responsive</span> and easy to <span class="text-primary">customize</span></h3>
-                        <p class="text-muted mt-2">The clean and well commented code allows easy customization of the
-                            theme.It's designed for
-                            <br>describing your app, agency or business.
+                        <h3>Pourquoi <span class="text-primary">Pharmaplatinium</span> est il <span class="text-primary">unique</span> ?</h3>
+                        <p class="text-muted mt-2">Gérer des regroupements de commande avec des outils de bureautique (Excel, Word)
+                            </br>et une communication par Email, Sms, Whatsapp ou autre devient vite ingérable. Pharmaplatinium offre
+                        </br>une solution dédiée et professionnelle.
                         </p>
                     </div>
                 </div>
@@ -116,12 +99,13 @@
                     <div class="text-center p-3">
                         <div class="avatar-sm m-auto">
                             <span class="avatar-title bg-primary-lighten rounded-circle">
-                                <i class="uil uil-desktop text-primary font-24"></i>
+                                <i class="uil  uil-database-alt text-primary font-24"></i>
                             </span>
                         </div>
-                        <h4 class="mt-3">Responsive Layouts</h4>
-                        <p class="text-muted mt-2 mb-0">Et harum quidem rerum as expedita distinctio nam libero tempore
-                            cum soluta nobis est cumque quo.
+                        <h4 class="mt-3">Ordonner</h4>
+                        <p class="text-muted mt-2 mb-0">Pour grouper des commandes efficacement, il est primmordial
+                            d'exposer clairement des données, et de les ordonner pour permettre à tous de
+                            faire ses commandes en toute confiance
                         </p>
                     </div>
                 </div>
@@ -130,12 +114,12 @@
                     <div class="text-center p-3">
                         <div class="avatar-sm m-auto">
                             <span class="avatar-title bg-primary-lighten rounded-circle">
-                                <i class="uil uil-vector-square text-primary font-24"></i>
+                                <i class="uil uil-link-broken text-primary font-24"></i>
                             </span>
                         </div>
-                        <h4 class="mt-3">Based on Bootstrap UI</h4>
-                        <p class="text-muted mt-2 mb-0">Temporibus autem quibusdam et aut officiis necessitatibus saepe
-                            eveniet ut sit et recusandae.
+                        <h4 class="mt-3">Unifier</h4>
+                        <p class="text-muted mt-2 mb-0">Le groupage de commande est basé sur la communication entre les acteurs. Pour éviter d'avoir à surveiller
+                            10 canaux de communication (tel, mail, sms, whatsapp, messenger etc.), optez pour un unique canal dédié
                         </p>
                     </div>
                 </div>
@@ -144,12 +128,12 @@
                     <div class="text-center p-3">
                         <div class="avatar-sm m-auto">
                             <span class="avatar-title bg-primary-lighten rounded-circle">
-                                <i class="uil uil-presentation text-primary font-24"></i>
+                                <i class="uil uil-users-alt text-primary font-24"></i>
                             </span>
                         </div>
-                        <h4 class="mt-3">Creative Design</h4>
-                        <p class="text-muted mt-2 mb-0">Nam libero tempore, cum soluta a est eligendi minus id quod
-                            maxime placeate facere assumenda est.
+                        <h4 class="mt-3">Orchestrer</h4>
+                        <p class="text-muted mt-2 mb-0">La clé d'un processus de groupage de commande est le timing pour que
+                            tous les acteurs agissent de concert. Pharmaplatinium guide et donne la mesure pour plus d'efficacité
                         </p>
                     </div>
                 </div>
@@ -160,12 +144,12 @@
                     <div class="text-center p-3">
                         <div class="avatar-sm m-auto">
                             <span class="avatar-title bg-primary-lighten rounded-circle">
-                                <i class="uil uil-apps text-primary font-24"></i>
+                                <i class="uil uil-sync text-primary font-24"></i>
                             </span>
                         </div>
-                        <h4 class="mt-3">Multiple Applications</h4>
-                        <p class="text-muted mt-2 mb-0">Et harum quidem rerum as expedita distinctio nam libero tempore
-                            cum soluta nobis est cumque quo.
+                        <h4 class="mt-3">Archiver</h4>
+                        <p class="text-muted mt-2 mb-0">Pour ne rien perdre, pour ne rien chercher, mais surtout pour offrir
+                            un service fiable à 100%, Pharmaplatinium archive toutes les données de commande
                         </p>
                     </div>
                 </div>
@@ -174,12 +158,12 @@
                     <div class="text-center p-3">
                         <div class="avatar-sm m-auto">
                             <span class="avatar-title bg-primary-lighten rounded-circle">
-                                <i class="uil uil-shopping-cart-alt text-primary font-24"></i>
+                                <i class="uil uil-chart-growth text-primary font-24"></i>
                             </span>
                         </div>
-                        <h4 class="mt-3">Ecommerce Pages</h4>
-                        <p class="text-muted mt-2 mb-0">Temporibus autem quibusdam et aut officiis necessitatibus saepe
-                            eveniet ut sit et recusandae.
+                        <h4 class="mt-3">Exploiter</h4>
+                        <p class="text-muted mt-2 mb-0">Commander est une chose, livrer les commandes est aussi important.
+                            Pharmaplatinium propose des états pour faciliter le dispatch, et les échanges avec les fournisseurs
                         </p>
                     </div>
                 </div>
@@ -188,12 +172,12 @@
                     <div class="text-center p-3">
                         <div class="avatar-sm m-auto">
                             <span class="avatar-title bg-primary-lighten rounded-circle">
-                                <i class="uil uil-grids text-primary font-24"></i>
+                                <i class="uil uil-graduation-hat text-primary font-24"></i>
                             </span>
                         </div>
-                        <h4 class="mt-3">Multiple Layouts</h4>
-                        <p class="text-muted mt-2 mb-0">Nam libero tempore, cum soluta a est eligendi minus id quod
-                            maxime placeate facere assumenda est.
+                        <h4 class="mt-3">Gagner du temps</h4>
+                        <p class="text-muted mt-2 mb-0">Toutes ces fonctionnalités non qu'un seul but: faire gagner du temps et de
+                            l'énergie aux gestionnaires, tout en offrant un niveau de fiabilité maximum.
                         </p>
                     </div>
                 </div>
@@ -201,290 +185,21 @@
 
         </div>
     </section>
-    <!-- END SERVICES -->
+    <!-- END PRESENTATION -->
 
-    <!-- START FEATURES 1 -->
-    <section class="py-5 bg-light-lighten border-top border-bottom border-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="text-center">
-                        <h3>Flexible <span class="text-primary">Layouts</span></h3>
-                        <p class="text-muted mt-2">There are three different layout options available to cater need for
-                            any <br /> modern web
-                            application.</p>
-                    </div>
-                </div>
-            </div>
 
-            <div class="row mt-4">
-                <div class="col-lg-4">
-                    <div class="demo-box text-center">
-                        <img src="{{asset('assets/images/layouts/layout-1.png')}}" alt="demo-img" class="img-fluid shadow-sm rounded">
-                        <h5 class="mt-3 f-17">Vertical Layout</h5>
-                    </div>
-                </div>
 
-                <div class="col-lg-4">
-                    <div class="demo-box text-center mt-3 mt-lg-0">
-                        <img src="{{asset('assets/images/layouts/layout-2.png')}}" alt="demo-img" class="img-fluid shadow-sm rounded">
-                        <h5 class="mt-3 f-17">Horizontal Layout</h5>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="demo-box text-center mt-3 mt-lg-0">
-                        <img src="{{asset('assets/images/layouts/layout-3.png')}}" alt="demo-img" class="img-fluid shadow-sm rounded">
-                        <h5 class="mt-3 f-17">Detached Layout</h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mt-4">
-
-                <div class="col-lg-4">
-                    <div class="demo-box text-center">
-                        <img src="{{asset('assets/images/layouts/layout-5.png')}}" alt="demo-img" class="img-fluid shadow-sm rounded">
-                        <h5 class="mt-3 f-17">Light Sidenav Layout</h5>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="demo-box text-center mt-3 mt-lg-0">
-                        <img src="{{asset('assets/images/layouts/layout-6.png')}}" alt="demo-img" class="img-fluid shadow-sm rounded">
-                        <h5 class="mt-3 f-17">Boxed Layout</h5>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="demo-box text-center mt-3 mt-lg-0">
-                        <img src="{{asset('assets/images/layouts/layout-4.png')}}" alt="demo-img" class="img-fluid shadow-sm rounded">
-                        <h5 class="mt-3 f-17">Semi Dark Layout</h5>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <!-- END FEATURES 1 -->
-
-    <!-- START FEATURES 2 -->
-    <section class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="text-center">
-                        <h1 class="mt-0"><i class="mdi mdi-heart-multiple-outline"></i></h1>
-                        <h3>Features you'll <span class="text-danger">love</span></h3>
-                        <p class="text-muted mt-2">Hyper comes with next generation ui design and have multiple benefits
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-2 py-5 align-items-center">
-                <div class="col-lg-5">
-                    <img src="{{asset('assets/images/features-1.svg')}}" class="img-fluid" alt="">
-                </div>
-                <div class="col-lg-6 offset-lg-1">
-                    <h3 class="fw-normal">Inbuilt applications and pages</h3>
-                    <p class="text-muted mt-3">Hyper comes with a variety of ready-to-use applications and pages that help to speed up the development</p>
-
-                    <div class="mt-4">
-                        <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> Projects & Tasks</p>
-                        <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> Ecommerce Application Pages</p>
-                        <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> Profile, pricing, invoice</p>
-                        <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> Login, signup, forget password</p>
-                    </div>
-
-                    <a href="" class="btn btn-primary btn-rounded mt-3">Read More <i class="mdi mdi-arrow-right ms-1"></i></a>
-
-                </div>
-            </div>
-
-            <div class="row pb-3 pt-5 align-items-center">
-                <div class="col-lg-6">
-                    <h3 class="fw-normal">Simply beautiful design</h3>
-                    <p class="text-muted mt-3">The simplest and fastest way to build dashboard or admin panel. Hyper is built using the latest tech and tools and provide an easy way to customize anything, including an overall color schemes, layout, etc.</p>
-
-                    <div class="mt-4">
-                        <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Built with latest Bootstrap</p>
-                        <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Extensive use of SCSS variables</p>
-                        <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Well documented and structured code</p>
-                        <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Detailed Documentation</p>
-                    </div>
-
-                    <a href="" class="btn btn-success btn-rounded mt-3">Read More <i class="mdi mdi-arrow-right ms-1"></i></a>
-
-                </div>
-                <div class="col-lg-5 offset-lg-1">
-                    <img src="{{asset('assets/images/features-2.svg')}}" class="img-fluid" alt="">
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <!-- END FEATURES 2 -->
-
-    <!-- START PRICING -->
-    <section class="py-5 bg-light-lighten border-top border-bottom border-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="text-center">
-                        <h1 class="mt-0"><i class="mdi mdi-tag-multiple"></i></h1>
-                        <h3>Choose Simple <span class="text-primary">Pricing</span></h3>
-                        <p class="text-muted mt-2">The clean and well commented code allows easy customization of the
-                            theme.It's designed for
-                            <br>describing your app, agency or business.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mt-5 pt-3">
-                <div class="col-md-4">
-                    <div class="card card-pricing">
-                        <div class="card-body text-center">
-                            <p class="card-pricing-plan-name fw-bold text-uppercase">Standard License </p>
-                            <i class="card-pricing-icon dripicons-user text-primary"></i>
-                            <h2 class="card-pricing-price">$49 <span>/ License</span></h2>
-                            <ul class="card-pricing-features">
-                                <li>10 GB Storage</li>
-                                <li>500 GB Bandwidth</li>
-                                <li>No Domain</li>
-                                <li>1 User</li>
-                                <li>Email Support</li>
-                                <li>24x7 Support</li>
-                            </ul>
-                            <button class="btn btn-primary mt-4 mb-2 btn-rounded">Choose Plan</button>
-                        </div>
-                    </div>
-                    <!-- end Pricing_card -->
-                </div>
-                <!-- end col -->
-
-                <div class="col-md-4">
-                    <div class="card card-pricing card-pricing-recommended">
-                        <div class="card-body text-center">
-                            <div class="card-pricing-plan-tag">Recommended</div>
-                            <p class="card-pricing-plan-name fw-bold text-uppercase">Multiple License</p>
-                            <i class="card-pricing-icon dripicons-briefcase text-primary"></i>
-                            <h2 class="card-pricing-price">$99 <span>/ License</span></h2>
-                            <ul class="card-pricing-features">
-                                <li>50 GB Storage</li>
-                                <li>900 GB Bandwidth</li>
-                                <li>2 Domain</li>
-                                <li>10 User</li>
-                                <li>Email Support</li>
-                                <li>24x7 Support</li>
-                            </ul>
-                            <button class="btn btn-primary mt-4 mb-2 btn-rounded">Choose Plan</button>
-                        </div>
-                    </div>
-                    <!-- end Pricing_card -->
-                </div>
-                <!-- end col -->
-
-                <div class="col-md-4">
-                    <div class="card card-pricing">
-                        <div class="card-body text-center">
-                            <p class="card-pricing-plan-name fw-bold text-uppercase">Extended License</p>
-                            <i class="card-pricing-icon dripicons-store text-primary"></i>
-                            <h2 class="card-pricing-price">$599 <span>/ License</span></h2>
-                            <ul class="card-pricing-features">
-                                <li>100 GB Storege</li>
-                                <li>Unlimited Bandwidth</li>
-                                <li>10 Domain</li>
-                                <li>Unlimited User</li>
-                                <li>Email Support</li>
-                                <li>24x7 Support</li>
-                            </ul>
-                            <button class="btn btn-primary mt-4 mb-2 btn-rounded">Choose Plan</button>
-                        </div>
-                    </div>
-                    <!-- end Pricing_card -->
-                </div>
-                <!-- end col -->
-
-            </div>
-
-        </div>
-    </section>
-    <!-- END PRICING -->
-
-    <!-- START FAQ -->
-    <section class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="text-center">
-                        <h1 class="mt-0"><i class="mdi mdi-frequently-asked-questions"></i></h1>
-                        <h3>Frequently Asked <span class="text-primary">Questions</span></h3>
-                        <p class="text-muted mt-2">Here are some of the basic types of questions for our customers. For more
-                            <br>information please contact us.
-                        </p>
-
-                        <button type="button" class="btn btn-success btn-sm mt-2"><i class="mdi mdi-email-outline me-1"></i> Email us your question</button>
-                        <button type="button" class="btn btn-info btn-sm mt-2 ms-1"><i class="mdi mdi-twitter me-1"></i> Send us a tweet</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mt-5">
-                <div class="col-lg-5 offset-lg-1">
-                    <!-- Question/Answer -->
-                    <div>
-                        <div class="faq-question-q-box">Q.</div>
-                        <h4 class="faq-question text-body">Can I use this template for my client?</h4>
-                        <p class="faq-answer mb-4 pb-1 text-muted">Yup, the marketplace license allows you to use this theme
-                            in any end products.
-                            For more information on licenses, please refere <a href="https://themes.getbootstrap.com/licenses/" target="_blank">here</a>.</p>
-                    </div>
-
-                    <!-- Question/Answer -->
-                    <div>
-                        <div class="faq-question-q-box">Q.</div>
-                        <h4 class="faq-question text-body">How do I get help with the theme?</h4>
-                        <p class="faq-answer mb-4 pb-1 text-muted">Use our dedicated support email (support@coderthemes.com) to send your issues or feedback. We are here to help anytime.</p>
-                    </div>
-
-                </div>
-                <!--/col-lg-5 -->
-
-                <div class="col-lg-5">
-                    <!-- Question/Answer -->
-                    <div>
-                        <div class="faq-question-q-box">Q.</div>
-                        <h4 class="faq-question text-body">Can this theme work with Wordpress?</h4>
-                        <p class="faq-answer mb-4 pb-1 text-muted">No. This is a HTML template. It won't directly with
-                            wordpress, though you can convert this into wordpress compatible theme.</p>
-                    </div>
-
-                    <!-- Question/Answer -->
-                    <div>
-                        <div class="faq-question-q-box">Q.</div>
-                        <h4 class="faq-question text-body">Will you regularly give updates of Hyper?</h4>
-                        <p class="faq-answer mb-4 pb-1 text-muted">Yes, We will update the Hyper regularly. All the
-                            future updates would be available without any cost.</p>
-                    </div>
-
-                </div>
-                <!--/col-lg-5-->
-            </div>
-            <!-- end row -->
-
-        </div> <!-- end container-->
-    </section>
-    <!-- END FAQ -->
 
 
     <!-- START CONTACT -->
-    <section class="py-5 bg-light-lighten border-top border-bottom border-light">
+    <section id="contact" class="py-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-center">
-                        <h3>Get In <span class="text-primary">Touch</span></h3>
-                        <p class="text-muted mt-2">Please fill out the following form and we will get back to you shortly. For more
-                            <br>information please contact us.
+                        <h3>Contactez <span class="text-primary">nous</span></h3>
+                        <p class="text-muted mt-2">Pour nous contacter, veuillez remplir le formulaire ci-joint et nous reviendrons vers vous très vite. Pour plus
+                            <br>d'information, contactez nous.
                         </p>
                     </div>
                 </div>
@@ -492,25 +207,26 @@
 
             <div class="row align-items-center mt-3">
                 <div class="col-md-4">
-                    <p class="text-muted"><span class="fw-bold">Customer Support:</span><br> <span class="d-block mt-1">+1 234 56 7894</span></p>
-                    <p class="text-muted mt-4"><span class="fw-bold">Email Address:</span><br> <span class="d-block mt-1">info@gmail.com</span></p>
-                    <p class="text-muted mt-4"><span class="fw-bold">Office Address:</span><br> <span class="d-block mt-1">4461 Cedar Street Moro, AR 72368</span></p>
-                    <p class="text-muted mt-4"><span class="fw-bold">Office Time:</span><br> <span class="d-block mt-1">9:00AM To 6:00PM</span></p>
+                    <p class="text-muted"><span class="fw-bold">Service support :</span><br> <span class="d-block mt-1">04 91 45 27 71</span></p>
+                    <p class="text-muted mt-4"><span class="fw-bold">Addresse email:</span><br> <span class="d-block mt-1">eric(at)glissattitude.com</span></p>
+                    <p class="text-muted mt-4"><span class="fw-bold">Adresse postale:</span><br> <span class="d-block mt-1">17 Montée du Cdt Robien, 13011 MARSEILLE</span></p>
+                    <p class="text-muted mt-4"><span class="fw-bold">Horaires:</span><br> <span class="d-block mt-1">10h-12h30 et 14h30-19h</span></p>
                 </div>
 
                 <div class="col-md-8">
-                    <form>
+                    <form method="POST" action="">
+                        @csrf
                         <div class="row mt-4">
                             <div class="col-lg-6">
                                 <div class="mb-2">
-                                    <label for="fullname" class="form-label">Your Name</label>
-                                    <input class="form-control form-control-light" type="text" id="fullname" placeholder="Name...">
+                                    <label for="fullname" class="form-label">Votre Nom</label>
+                                    <input class="form-control form-control-light" type="text" id="fullname" name="fullname" placeholder="Nom...">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-2">
-                                    <label for="emailaddress" class="form-label">Your Email</label>
-                                    <input class="form-control form-control-light" type="email" required="" id="emailaddress" placeholder="Enter you email...">
+                                    <label for="emailaddress" class="form-label">Votre Email*</label>
+                                    <input class="form-control form-control-light" type="email"  id="emailaddress" name="emailaddress" placeholder="Entrez votre Email..." required>
                                 </div>
                             </div>
                         </div>
@@ -518,8 +234,8 @@
                         <div class="row mt-1">
                             <div class="col-lg-12">
                                 <div class="mb-2">
-                                    <label for="subject" class="form-label">Your Subject</label>
-                                    <input class="form-control form-control-light" type="text" id="subject" placeholder="Enter subject...">
+                                    <label for="subject" class="form-label">Sujet</label>
+                                    <input class="form-control form-control-light" type="text" id="subject" name="subject" placeholder="Entrez le sujet...">
                                 </div>
                             </div>
                         </div>
@@ -528,16 +244,30 @@
                             <div class="col-lg-12">
                                 <div class="mb-2">
                                     <label for="comments" class="form-label">Message</label>
-                                    <textarea id="comments" rows="4" class="form-control form-control-light" placeholder="Type your message here..."></textarea>
+                                    <textarea id="comments" rows="4" class="form-control form-control-light" name="comments" placeholder="Ecrivez votre message ici..."></textarea>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row mt-2">
-                            <div class="col-12 text-end">
-                                <button class="btn btn-primary">Send a Message <i class="mdi mdi-telegram ms-1"></i> </button>
+                            <div class="col-lg-6">
+                                {!!  htmlFormSnippet() !!}
+                            </div>
+                            <div class="col-lg-6 text-end">
+                                <button id="btn_submit"  type="submit" class="btn btn-primary mt-2">Envoyez votre message <i class="mdi mdi-telegram ms-1"></i> </button>
                             </div>
                         </div>
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                     </form>
                 </div>
             </div>
@@ -546,74 +276,15 @@
     <!-- END CONTACT -->
 
     <!-- START FOOTER -->
-    <footer class="bg-dark py-5">
+    <footer id="foot" class="bg-dark py-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
                     <img src="{{asset('assets/images/logo.png')}}" alt="" class="logo-dark" height="18" />
-                    <p class="text-muted mt-4">Hyper makes it easier to build better websites with
-                        <br> great speed. Save hundreds of hours of design
-                        <br> and development by using it.
-                    </p>
-
-                    <ul class="social-list list-inline mt-3">
-                        <li class="list-inline-item text-center">
-                            <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i class="mdi mdi-facebook"></i></a>
-                        </li>
-                        <li class="list-inline-item text-center">
-                            <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="mdi mdi-google"></i></a>
-                        </li>
-                        <li class="list-inline-item text-center">
-                            <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="mdi mdi-twitter"></i></a>
-                        </li>
-                        <li class="list-inline-item text-center">
-                            <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github"></i></a>
-                        </li>
-                    </ul>
 
                 </div>
-
-                <div class="col-lg-2 mt-3 mt-lg-0">
-                    <h5 class="text-light">Company</h5>
-
-                    <ul class="list-unstyled ps-0 mb-0 mt-3">
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-muted">About Us</a></li>
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Documentation</a></li>
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Blog</a></li>
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Affiliate Program</a></li>
-                    </ul>
-
-                </div>
-
-                <div class="col-lg-2 mt-3 mt-lg-0">
-                    <h5 class="text-light">Apps</h5>
-
-                    <ul class="list-unstyled ps-0 mb-0 mt-3">
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Ecommerce Pages</a></li>
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Email</a></li>
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Social Feed</a></li>
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Projects</a></li>
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Tasks Management</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-2 mt-3 mt-lg-0">
-                    <h5 class="text-light">Discover</h5>
-
-                    <ul class="list-unstyled ps-0 mb-0 mt-3">
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Help Center</a></li>
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Our Products</a></li>
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-muted">Privacy</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="mt-5">
-                        <p class="text-muted mt-4 text-center mb-0">© 2018 - 2021 Hyper. Design and coded by
-                            Coderthemes</p>
-                    </div>
+                <div class="col-lg-6 text-end">
+                    <p class="text-muted">© 2022 Pharmaplatinium. Powered by Glissattitude</p>
                 </div>
             </div>
         </div>

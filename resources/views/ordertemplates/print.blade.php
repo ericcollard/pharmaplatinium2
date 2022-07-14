@@ -50,7 +50,7 @@
 
                     @if ($orderTemplate->content->count() > 0)
 
-                            <table class="table table-sm">
+                            <table class="table table-sm mt-4">
                                 <thead>
                                 <tr>
                                     <th scope="col">EAN</th>
@@ -60,7 +60,6 @@
                                     <th scope="col">Prix palier</th>
                                     <th scope="col">Qté Palier</th>
                                     <th scope="col">Colisage</th>
-                                    <th scope="col">1/2 colis</th>
                                     <th scope="col">Qté totale</th>
                                     <th scope="col">Sous total</th>
                                 </tr>
@@ -84,7 +83,6 @@
                                         </td>
                                         <td>{{ !is_null($orderTemplateContentItem->step_value) ? number_format($orderTemplateContentItem->step_value,0)  : 'nc' }}</td>
                                         <td>{{ !is_null($orderTemplateContentItem->package_qty) ? number_format($orderTemplateContentItem->package_qty,0)  : 'nc' }}</td>
-                                        <td>{!! $orderTemplateContentItem->demi_package == 1 ? 'Oui'  : 'Non' !!}</td>
                                         <td {!! $totalQty <  $orderTemplateContentItem->step_value ? 'style="color : red; font-weight: bold"' : 'style="color : green; font-weight: bold"' !!}  >{{ $totalQty }}</td>
                                         <td>{{ number_format($orderTemplateContentItem->totalValue(),2).'€' }}</td>
 
@@ -94,7 +92,7 @@
                                         <tr>
                                             <td></td>
                                             <td colspan="8">
-                                                <table class="table mb-5  table-sm">
+                                                <table class="table mb-5 mt-3 table-sm">
                                                     <thead>
                                                     <tr>
                                                         <th scope="col">Pharmacie</th>

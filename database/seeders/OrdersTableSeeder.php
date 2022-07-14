@@ -89,6 +89,36 @@ class OrdersTableSeeder extends Seeder
                 'created_at' => '2022-07-13 14:06:12',
                 'updated_at' => '2022-07-13 14:06:34',
             ),
+            7 => 
+            array (
+                'id' => 14,
+                'ordertemplatecontent_id' => 5,
+                'user_id' => 2,
+                'qty' => 20,
+                'comment' => NULL,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            8 => 
+            array (
+                'id' => 15,
+                'ordertemplatecontent_id' => 6,
+                'user_id' => 2,
+                'qty' => 40,
+                'comment' => NULL,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            9 => 
+            array (
+                'id' => 16,
+                'ordertemplatecontent_id' => 5,
+                'user_id' => 3,
+                'qty' => 40,
+                'comment' => NULL,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
         ));
         
         
