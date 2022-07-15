@@ -19,7 +19,8 @@ class OrderTemplatePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        if (Auth::guest()) return false;
+        if ($user->hasRole('ROLE_GESTIONNAIRE')) return true;
     }
 
     /**

@@ -35,6 +35,11 @@ class OrderTemplateController extends Controller
      */
     public function index(OrderTemplatesDataTable $dataTable)
     {
+        if (Auth()->user()->cannot('viewAny', OrderTemplate::class)) {
+            abort(403);
+        }
+
+
         if (array_key_exists('from', request()->all()))
         {
             $manager_id = request()->from;
@@ -47,6 +52,10 @@ class OrderTemplateController extends Controller
 
     public function listOfOrderTemplate(OrderTemplatesDataTable $dataTable, $status="",$manager_id="") // list of order templates
     {
+        if (Auth()->user()->cannot('viewAny', OrderTemplate::class)) {
+            abort(403);
+        }
+
         $listType = "template";
         $dataTable->with('listType', $listType); // pour utiliser le même datatable en 2 versions (template ou user)
 
