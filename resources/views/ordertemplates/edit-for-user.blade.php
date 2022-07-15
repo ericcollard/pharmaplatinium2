@@ -178,17 +178,21 @@
                                 <div class="row">
                                 <div class="col-6">
                                     <div class="form-group mb-3">
+                                        @can ('update_for_user', $orderTemplate)
                                         <button id="btn_submit" type="submit" class="btn btn-primary">{{ __('Update') }}</button>
+                                        @endcan
                                     </div>
                             </form>
                                 </div>
                                 <div class="col-6 text-end"  >
                                     <div class="form-group mb-3">
+                                        @can ('update_for_user', $orderTemplate)
                                         <form class="deleteconfirm d-sm-inline-block action-icon" action="{{ route('order.destroy',$orderTemplate->id) }}" method="POST" onsubmit="return confirm('Etes vous sur de vouloir supprimer votre commande ?')">
                                             <input type="hidden" name="_method" value="DELETE">
                                             {{ csrf_field() }}
                                             <button id="btn_submit" type="submit" class="btn btn-danger">Supprimer la commande</button>
                                         </form>
+                                        @endcan
                                     </div>
                                 </div>
                                 </div>

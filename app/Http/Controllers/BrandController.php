@@ -11,6 +11,19 @@ use Illuminate\Support\Facades\URL;
 class BrandController extends Controller
 {
     /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Brand::class, 'brand');
+    }
+
+
+
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

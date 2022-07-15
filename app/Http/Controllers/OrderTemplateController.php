@@ -19,6 +19,16 @@ class OrderTemplateController extends Controller
 {
 
     /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(OrderTemplate::class, 'orderTemplate');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -160,6 +170,11 @@ class OrderTemplateController extends Controller
      */
     public function edit_for_user(OrderTemplate $orderTemplate)
     {
+
+        if (Auth()->user()->cannot('show_for_user', $orderTemplate)) {
+            abort(403);
+        }
+
         // Création des lignes de commande manquantes
         foreach ($orderTemplate->content as $orderTemplateContentItem)
         {

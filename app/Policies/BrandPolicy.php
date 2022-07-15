@@ -2,32 +2,15 @@
 
 namespace App\Policies;
 
+use App\Models\Brand;
 use App\Models\User;
-use App\Role\RoleChecker;
-use App\Role\UserRole;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
 
-class UserPolicy
+class BrandPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * Perform pre-authorization checks.
-     *
-     * @param  \App\Models\User  $user
-     * @param  string  $ability
-     * @return void|bool
-     */
-    /*
-    public function before(User $user, $ability)
-    {
-        if (RoleChecker::check($user, UserRole::ROLE_ADMIN))
-        {
-            return true;
-        }
-    }
-*/
     /**
      * Determine whether the user can view any models.
      *
@@ -44,10 +27,10 @@ class UserPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\User  $model
+     * @param  \App\Models\Brand  $brand
      * @return mixed
      */
-    public function view(User $user, User $model)
+    public function view(User $user, Brand $brand)
     {
         if (Auth::guest()) return false;
         return true;
@@ -61,54 +44,59 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        //
+        if (Auth::guest()) return false;
+        if ($user->hasRole('ROLE_GESTIONNAIRE')) return true;
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\User  $model
+     * @param  \App\Models\Brand  $brand
      * @return mixed
      */
-    public function update(User $user, User $model)
+    public function update(User $user, Brand $brand)
     {
-        return $model->id === $user->id;
+        if (Auth::guest()) return false;
+        if ($user->hasRole('ROLE_GESTIONNAIRE')) return true;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\User  $model
+     * @param  \App\Models\Brand  $brand
      * @return mixed
      */
-    public function delete(User $user, User $model)
+    public function delete(User $user, Brand $brand)
     {
-        return $model->id === $user->id;
+        if (Auth::guest()) return false;
+        if ($user->hasRole('ROLE_GESTIONNAIRE')) return true;
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\User  $model
+     * @param  \App\Models\Brand  $brand
      * @return mixed
      */
-    public function restore(User $user, User $model)
+    public function restore(User $user, Brand $brand)
     {
-        return $model->id === $user->id;
+        if (Auth::guest()) return false;
+        if ($user->hasRole('ROLE_GESTIONNAIRE')) return true;
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\User  $model
+     * @param  \App\Models\Brand  $brand
      * @return mixed
      */
-    public function forceDelete(User $user, User $model)
+    public function forceDelete(User $user, Brand $brand)
     {
-        return $model->id === $user->id;
+        if (Auth::guest()) return false;
+        if ($user->hasRole('ROLE_GESTIONNAIRE')) return true;
     }
 }
