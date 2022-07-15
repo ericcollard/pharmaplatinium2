@@ -111,4 +111,10 @@ class UserPolicy
     {
         return $model->id === $user->id;
     }
+
+    public function seeEmails(User $user, User $model)
+    {
+        if (Auth::guest()) return false;
+        return true;
+    }
 }

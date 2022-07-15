@@ -40,6 +40,11 @@ class UserController extends Controller
      */
     public function emails()
     {
+
+        if (Auth()->user()->cannot('seeEmails', Auth()->user())) {
+            abort(403);
+        }
+
         $users = User::all();
         return view('users.emails', ['users' => $users]);
     }
