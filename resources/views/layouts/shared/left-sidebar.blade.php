@@ -2,7 +2,7 @@
 <div class="leftside-menu">
 
     <!-- LOGO -->
-    <a href="{{ route('home') }}" class="logo text-center logo-light">
+    <a href="{{ route('landing') }}" class="logo text-center logo-light">
         <span class="logo-lg">
             <img src="{{asset('assets/images/logo.png')}}" alt="" height="28">
         </span>

@@ -22,6 +22,7 @@ class CreateOrderTemplatesTable extends Migration
             $table->text('comment')->nullable();
             $table->string('status')->default('Brouillon');
             $table->boolean('multi_deliveries')->default(0);
+            $table->boolean('franco_required')->default(0);
             $table->timestamps();
         });
     }

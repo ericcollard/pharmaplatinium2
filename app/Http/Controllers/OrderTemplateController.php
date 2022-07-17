@@ -255,8 +255,7 @@ class OrderTemplateController extends Controller
             }
         }
 
-        $this->validate(request(), $arr_validation
-        );
+        $this->validate(request(), $arr_validation);
 
         foreach ($orders_array as $key => $order_array)
         {
@@ -322,6 +321,17 @@ class OrderTemplateController extends Controller
         try {
 
             $data = $request->all();
+
+            if(!array_key_exists('multi_deliveries', $data))
+            {
+                $data['multi_deliveries'] = 0;
+            }
+            if(!array_key_exists('franco_required', $data))
+            {
+                $data['franco_required'] = 0;
+            }
+
+
             $orderTemplate = OrderTemplate::create($data);
 
         } catch (\Exception $e) {
@@ -355,6 +365,12 @@ class OrderTemplateController extends Controller
         {
             $data['multi_deliveries'] = 0;
         }
+        if(!array_key_exists('franco_required', $data))
+        {
+            $data['franco_required'] = 0;
+        }
+
+
 
         $orderTemplate->update($data);
 

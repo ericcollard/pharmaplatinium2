@@ -102,7 +102,7 @@
                                        value="{{ $orderTemplate->title ? $orderTemplate->title : old('title') }}" required/>
                             </div>
 
-                            <div class="col-lg-6  mb-3">
+                            <div class="col-lg-3  mb-3">
                                 <label for="brand_id" class="form-label">Laboratoire :*</label>
                                 <select name="brand_id" id="brand_id" class="form-control" required>
                                     <option value="">Choisir un laboratoire ...</option>
@@ -110,6 +110,12 @@
                                         <option value='{{ $brand->id }}' {{ $orderTemplate->brand_id ? ($orderTemplate->brand_id == $brand->id ? 'selected' : '') : ( old('brand_id') == $brand->id ? 'selected' : '') }}>{{ $brand->name }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+
+                            <div class="col-lg-3  mb-3">
+                                <label for="dead_line">Date de fermeture :</label>
+                                <input type="text" class="form-control" id="dead_line" name="dead_line"
+                                       value="{{ $orderTemplate->dead_line ? $orderTemplate->dead_line : old('dead_line') }}" required/>
                             </div>
 
 
@@ -123,11 +129,16 @@
 
                             </div>
 
-                            <div class="col-lg-3  mb-3">
-                                <label for="dead_line">Date de fermeture :</label>
-                                <input type="text" class="form-control" id="dead_line" name="dead_line"
-                                       value="{{ $orderTemplate->dead_line ? $orderTemplate->dead_line : old('dead_line') }}" required/>
+
+                            <div class="col-lg-3 mb-3 d-flex align-items-center">
+                                <div class="form-check form-switch mt-3">
+                                    <input class="form-check-input" type="checkbox" id="franco_required" name="franco_required"
+                                           value="1"
+                                        {{ $orderTemplate->franco_required == '1' ? 'checked' :''}}>
+                                    <label class="form-check-label" for="franco_required">Franco obligatoire ?</label>
+                                </div>
                             </div>
+
 
                             <div class="col-lg-3 mb-3">
                                 <label for="order_status">Statut*</label>

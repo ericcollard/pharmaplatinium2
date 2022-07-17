@@ -23,6 +23,7 @@ class OrderTemplate extends Model
         'comment',
         'status',
         'multi_deliveries',
+        'franco_required'
     ];
 
     protected $with = ['brand'];

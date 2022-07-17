@@ -128,4 +128,32 @@ class OrderTemplatePolicy
         return true;
     }
 
+    /**
+     * Determine if the given order can be printed
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Post  $orderTemplate
+     * @return bool
+     */
+    public function print(User $user, OrderTemplate $orderTemplate)
+    {
+        if (Auth::guest()) return false;
+        if ($user->id == $orderTemplate->brand->manager->id) return true;
+        return false;
+    }
+
+    /**
+     * Determine if the given order can be duplicated
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Post  $orderTemplate
+     * @return bool
+     */
+    public function duplicate(User $user, OrderTemplate $orderTemplate)
+    {
+        if (Auth::guest()) return false;
+        if ($user->id == $orderTemplate->brand->manager->id) return true;
+        return false;
+    }
+
 }

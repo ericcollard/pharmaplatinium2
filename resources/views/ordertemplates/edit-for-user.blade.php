@@ -68,6 +68,11 @@
                                 <div class="mb-1"><span class="header-title">Statut : </span> <span class="text-muted">{{ $orderTemplate->status }}</span></div>
                                 <div class="mb-1"><span class="header-title">Gestionnaire : </span> <span class="text-muted">{{ $orderTemplate->brand->manager->name }}</span></div>
                                 <div class="mb-1"><span class="header-title">Livraison multiple : </span>{!! $orderTemplate->multi_deliveries == 1 ? '<i class="mdi mdi-checkbox-marked-outline mdi-18px"></i>'  : '<i class="mdi mdi-checkbox-blank-outline mdi-18px"></i>' !!} <span class="text-muted">(fonctionnalité non active)</span></div>
+                                <div class="mb-1"><span class="header-title">Franco obligatoire : </span>{!! $orderTemplate->franco_required == 1 ? '<i class="mdi mdi-checkbox-marked-outline mdi-18px"></i>'  : '<i class="mdi mdi-checkbox-blank-outline mdi-18px"></i>' !!} <span class="text-muted"></span>
+                                    @if ($orderTemplate->franco_required == 1 and $orderTemplate->totalValue() <  $orderTemplate->franco)
+                                        <span class="alert alert-danger">LE FRANCO N'A PAS ETE ATTEINT, Cette commande ne sera pas validée !</span>
+                                    @endif
+                                </div>
                             </div> <!-- end col-->
                         </div> <!-- end row -->
 
