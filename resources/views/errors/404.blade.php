@@ -1,4 +1,4 @@
-@extends('layouts.vertical')
+@extends('layouts.vertical', ["page_title"=> "Erreur"])
 
 @section('css')
 
@@ -17,7 +17,7 @@
 
         <h1  class="text-center">
             <img class="img-fluid" src="{{asset('assets/images/oups.png')}}" style="width: 50%;"><br>
-            <p class="text-center mt-3">  {!! __("The requested resource doesn't exist")  !!} </p>
+            <p class="text-center mt-3"> Fichier non trouvé </p>
             @can('see-admin-only-data')
             <p class="text-center text-muted thin h4 mt-4"> #{{ $exception->getStatusCode()  }} : {{ __($exception->getMessage() ?: 'Not Found') }}</p>
             @endcan
