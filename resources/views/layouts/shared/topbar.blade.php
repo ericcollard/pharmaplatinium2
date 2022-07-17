@@ -4,7 +4,11 @@
         <li class="dropdown notification-list topbar-dropdown">
             <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <img src="{{asset('assets/images/flags/'.session('locale').'.jpg')}}" alt="user-image" class="me-0 me-sm-1" height="12">
-                <span class="align-middle d-none d-sm-inline-block">{{ config('locale.languages')[session('locale')][3] }}</span> <i class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
+                <span class="align-middle d-none d-sm-inline-block">
+                    @if (session('locale') and array_key_exists(3,session('locale')))
+                    {{ config('locale.languages')[session('locale')][3] }}
+                    @endif
+                </span> <i class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu">
 
