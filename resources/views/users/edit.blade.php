@@ -171,19 +171,19 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="ROLE_GESTIONNAIRE" id="roleCheck2" name="roles[]" {{ in_array("ROLE_GESTIONNAIRE", $user->roles) ? 'checked' : '' }}>
                                         <label class="form-check-label" for="roleCheck2">
-                                            ROLE_EDITOR
+                                            ROLE_GESTIONNAIRE
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="ROLE_CLIENT" id="roleCheck3" name="roles[]" {{ in_array("ROLE_CLIENT", $user->roles) ? 'checked' : '' }}>
                                         <label class="form-check-label" for="roleCheck3">
-                                            ROLE_CONTRIBUTOR
+                                            ROLE_CLIENT
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="ROLE_VISITEUR" id="roleCheck4" name="roles[]" {{ in_array("ROLE_VISITEUR", $user->roles) ? 'checked' : '' }}>
                                         <label class="form-check-label" for="roleCheck4">
-                                            ROLE_VISITOR
+                                            ROLE_VISITEUR
                                         </label>
                                     </div>
 
