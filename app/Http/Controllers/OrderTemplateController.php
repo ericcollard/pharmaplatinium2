@@ -421,18 +421,11 @@ class OrderTemplateController extends Controller
             ->select('users.name as username','orders.qty','order_template_contents.name','order_template_contents.ean','order_template_contents.variant')
         ->get()->groupBy('username');
 
-/*
-        foreach($orders as $key=>$order)
-        {
-            foreach($order as $orderLine)
-            {
-                dd($orderLine->qty);
-            }
-            //dd($key, $order);
-        }
-*/
-
-
         return view('ordertemplates.print2', compact('orders','orderTemplate'));
+    }
+
+    public function print3(OrderTemplate $orderTemplate)
+    {
+        return view('ordertemplates.print3', compact('orderTemplate'));
     }
 }

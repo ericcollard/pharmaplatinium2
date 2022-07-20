@@ -76,6 +76,11 @@
                                                 <i class="mdi mdi-printer me-1"></i> par Pharmacie
                                             </a>
                                         </button>
+                                            <button type="button" class="btn btn-primary mx-1 mb-1">
+                                                <a href="{{ route('orderTemplate.print3' , ['orderTemplate' => $orderTemplate]) }}" style="color: inherit">
+                                                    <i class="mdi mdi-printer me-1"></i> Pour commande
+                                                </a>
+                                            </button>
                                     @endcan
 
                                 </div>

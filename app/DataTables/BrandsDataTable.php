@@ -39,7 +39,13 @@ class BrandsDataTable extends DataTable
      */
     public function query(Brand $model)
     {
-        return $model->newQuery();
+
+        $builder =  $model->newQuery();
+        $builder->join('users','users.id','=','brands.manager_id');
+        $builder->select('brands.*','users.name as manager')->distinct();
+        return $builder;
+
+
     }
 
     /**
@@ -111,6 +117,7 @@ class BrandsDataTable extends DataTable
         return [
             Column::make('id')->title('Référence'),
             Column::make('name')->title('Nom'),
+            Column::make('manager')->title('Gestionnaire')->searchable(false),
             Column::make('discount')->title('Remise standard'),
             Column::computed('action')
                 ->exportable(false)
