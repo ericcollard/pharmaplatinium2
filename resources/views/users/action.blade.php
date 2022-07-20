@@ -1,5 +1,5 @@
 <td class="table-action">
-    <a href="{{ route('user.show',$id) }}" class="action-icon"> <i class="mdi mdi-magnify-plus"></i></a>
+    <a href="{{ route('user.show',$id) }}" class="action-icon"> <i class="mdi mdi-magnify"></i></a>
     <a href="{{ route('user.edit',$id) }}" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
     <form id="delete-{{ $id }}" method="POST" action="{{ route('user.destroy',$id) }}" class="d-sm-inline-block action-icon">
         {{ csrf_field() }}

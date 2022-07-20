@@ -116,7 +116,57 @@
                 <!-- Chart-->
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="header-title mb-3">Modèles de commande gérés</h4>
+                        <h4 class="header-title mb-3">Modèles de commande sur un an glissant</h4>
+                        <P>Date de cloture entre le {{ now()->sub(new DateInterval('P1Y'))->formatLocalized('%d %B %Y') }} et ce jour.</P>
+
+                        @if ($brand->ordertemplates->count() > 0)
+                            <div class="table-responsive-xl">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Ref</th>
+                                        <th scope="col">Date de crétion</th>
+                                        <th scope="col">Date de cloture</th>
+                                        <th scope="col">Titre</th>
+                                        <th scope="col">Statut</th>
+                                        <th scope="col">Montant</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                        $totalValue = 0.0;
+                                    ?>
+
+
+
+                                    @foreach($brand->ordertemplates()->where('dead_line','>=',now()->sub(new DateInterval('P1Y')))->get() as $index => $orderTemplate)
+
+                                        <?php
+                                            $orderValue = $orderTemplate->totalValue();
+                                            $totalValue += $orderValue;
+                                        ?>
+                                        <tr>
+                                            <th scope="row">{{ $orderTemplate->id }}</th>
+                                            <td>{{ $orderTemplate->created_at->formatLocalized('%d %B %Y') }}</td>
+                                            <td>{{ $orderTemplate->dead_line->formatLocalized('%d %B %Y') }}</td>
+                                            <td>{{ $orderTemplate->title }}</td>
+                                            <td>{{ $orderTemplate->status }}</td>
+                                            <td>{{ number_format($orderValue,2).'€' }}</td>
+
+                                            <td class="table-action">
+                                                <a href="{{ route('orderTemplate.show',$orderTemplate) }}" class="action-icon"> <i class="mdi mdi-magnify"></i></a>
+                                            </td>
+
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                                <p>Total : {{ number_format($totalValue,2).'€' }}</p>
+                            </div>
+                        @endif
+
+
                     </div>
                 </div>
                 <!-- End Chart-->

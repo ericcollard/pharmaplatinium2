@@ -51,5 +51,9 @@ class Brand extends Model
         return route('brand.show', $this);
     }
 
+    public function ordertemplates()
+    {
+        return $this->hasMany(OrderTemplate::class,'brand_id');
+    }
 
 }
