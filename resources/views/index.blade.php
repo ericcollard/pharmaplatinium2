@@ -18,7 +18,7 @@
                 <div class="page-title-right">
 
                 </div>
-                <h4 class="page-title">Dashboard</h4>
+                <h4 class="page-title">Dashboard 1</h4>
             </div>
         </div>
     </div>

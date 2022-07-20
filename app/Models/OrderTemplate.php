@@ -47,6 +47,10 @@ class OrderTemplate extends Model
         });
     }
 
+    public function ref()
+    {
+        return $this->id;
+    }
 
     public function brand()
     {

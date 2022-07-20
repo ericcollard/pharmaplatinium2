@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTableAbstract;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
+use function PHPUnit\Framework\lessThanOrEqual;
 
 class OrderTemplatesDataTable extends DataTable
 {
@@ -55,8 +56,14 @@ class OrderTemplatesDataTable extends DataTable
     {
 
         $builder =  $model->newQuery();
+        $builder->join('brands','brands.id','=','order_templates.brand_id');
+
         if ($this->manager)
-            $builder->join('brands','brands.id','=','order_templates.brand_id')->where('brands.manager_id',$this->manager->id);
+        {
+            $builder->where('brands.manager_id',$this->manager->id);
+            //$builder->where('brands.manager_id',$this->manager->id);
+        }
+
         if ($this->client_id)
             $builder->join('order_template_contents','order_template_contents.ordertemplate_id','=','order_templates.id')
                 ->leftJoin('orders','order_template_contents.id','=','orders.ordertemplatecontent_id')
@@ -64,8 +71,7 @@ class OrderTemplatesDataTable extends DataTable
         if ($this->status)
             $builder->where('status','=',$this->status);
 
-
-        $builder->select('order_templates.*')->distinct();
+        $builder->select('order_templates.*','order_templates.id as order_templates_id','brands.name')->distinct();
         return $builder;
     }
 
@@ -197,7 +203,7 @@ class OrderTemplatesDataTable extends DataTable
     {
         return [
 
-            Column::make('id')->title('Ref'),
+            Column::make('order_templates_id')->title('Ref'),
             Column::make('brand.name')->title('Laboratoire'),
             Column::make('title')->title('Titre'),
             Column::make('created_at')->title('Création'),
