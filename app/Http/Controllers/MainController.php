@@ -11,6 +11,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
@@ -36,9 +37,18 @@ class MainController extends Controller
         $dashboard['userCnt'] = User::count();
         $dashboard['brandCnt'] = Brand::count();
         $dashboard['orderTemplateCnt'] = OrderTemplate::count();
-        $dashboard['orderCnt'] = DB::select( DB::raw("select count(distinct(order_template_contents.ordertemplate_id)) as cnt from orders
+
+        if (Auth::check())
+        {
+            $dashboard['orderCnt'] = DB::select( DB::raw("select count(distinct(order_template_contents.ordertemplate_id)) as cnt from orders
 inner join order_template_contents on order_template_contents.id = orders.ordertemplatecontent_id
-where user_id = 2") )[0]->cnt;
+where user_id = ".Auth::user()->id) )[0]->cnt;
+        }
+        else
+        {
+            $dashboard['orderCnt'] = 0;
+        }
+
 
         // Graphique de publication des commandes
         $chartDatas = OrderTemplate::select([
