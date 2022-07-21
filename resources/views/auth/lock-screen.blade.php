@@ -59,7 +59,7 @@
     </div>
     <!-- end page -->
 
-    @include('layouts.shared/footer-3')
+    @include('layouts.shared/footer')
 
     @include('layouts.shared/footer-script')
 

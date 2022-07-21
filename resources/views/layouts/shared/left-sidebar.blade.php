@@ -111,10 +111,9 @@
             <a href="javascript: void(0);" class="float-end close-btn text-white">
                 <i class="mdi mdi-close"></i>
             </a>
-            <img src="{{asset('assets/images/help-icon.svg')}}" height="90" alt="Helper Icon Image" />
-            <h5 class="mt-3">xxx</h5>
-            <p class="mb-3">ksjhdqkjshdfkjhf</p>
-            <a href="/posts/5/98" class="btn btn-outline-light btn-sm">Participer</a>
+            <img src="{{asset('assets/images/pharma.png')}}" height="120" alt="Helper Icon Image" />
+            <h5 class="mt-3">Membre ?</h5>
+            <a href="register" class="btn btn-outline-light btn-sm">S'incrire</a>
         </div>
         <!-- end Help Box -->
         <!-- End Sidebar -->
