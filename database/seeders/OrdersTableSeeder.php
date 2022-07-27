@@ -27,7 +27,7 @@ class OrdersTableSeeder extends Seeder
                 'qty' => 40,
                 'comment' => 'user 1, otc 1',
                 'created_at' => NULL,
-                'updated_at' => '2022-07-13 17:22:34',
+                'updated_at' => '2022-07-13 18:22:34',
             ),
             1 => 
             array (
@@ -47,7 +47,7 @@ class OrdersTableSeeder extends Seeder
                 'qty' => 30,
                 'comment' => 'user 1, otc 3',
                 'created_at' => NULL,
-                'updated_at' => '2022-07-13 13:41:48',
+                'updated_at' => '2022-07-13 14:41:48',
             ),
             3 => 
             array (
@@ -57,7 +57,7 @@ class OrdersTableSeeder extends Seeder
                 'qty' => 40,
                 'comment' => 'user 1, otc 4',
                 'created_at' => NULL,
-                'updated_at' => '2022-07-13 13:41:48',
+                'updated_at' => '2022-07-13 14:41:48',
             ),
             4 => 
             array (
@@ -66,8 +66,8 @@ class OrdersTableSeeder extends Seeder
                 'user_id' => 5,
                 'qty' => 20,
                 'comment' => NULL,
-                'created_at' => '2022-07-13 14:06:12',
-                'updated_at' => '2022-07-13 14:06:40',
+                'created_at' => '2022-07-13 15:06:12',
+                'updated_at' => '2022-07-13 15:06:40',
             ),
             5 => 
             array (
@@ -77,7 +77,7 @@ class OrdersTableSeeder extends Seeder
                 'qty' => 40,
                 'comment' => 'user 1, otc 1',
                 'created_at' => NULL,
-                'updated_at' => '2022-07-13 17:22:34',
+                'updated_at' => '2022-07-13 18:22:34',
             ),
             6 => 
             array (
@@ -97,7 +97,7 @@ class OrdersTableSeeder extends Seeder
                 'qty' => 30,
                 'comment' => 'user 1, otc 3',
                 'created_at' => NULL,
-                'updated_at' => '2022-07-13 13:41:48',
+                'updated_at' => '2022-07-13 14:41:48',
             ),
             8 => 
             array (
@@ -107,7 +107,7 @@ class OrdersTableSeeder extends Seeder
                 'qty' => 40,
                 'comment' => 'user 1, otc 4',
                 'created_at' => NULL,
-                'updated_at' => '2022-07-13 13:41:48',
+                'updated_at' => '2022-07-13 14:41:48',
             ),
             9 => 
             array (
@@ -116,8 +116,8 @@ class OrdersTableSeeder extends Seeder
                 'user_id' => 2,
                 'qty' => 20,
                 'comment' => NULL,
-                'created_at' => '2022-07-13 14:06:12',
-                'updated_at' => '2022-07-13 14:06:40',
+                'created_at' => '2022-07-13 15:06:12',
+                'updated_at' => '2022-07-13 15:06:40',
             ),
             10 => 
             array (
@@ -127,7 +127,7 @@ class OrdersTableSeeder extends Seeder
                 'qty' => 40,
                 'comment' => 'user 1, otc 1',
                 'created_at' => NULL,
-                'updated_at' => '2022-07-13 17:22:34',
+                'updated_at' => '2022-07-13 18:22:34',
             ),
             11 => 
             array (
@@ -147,7 +147,7 @@ class OrdersTableSeeder extends Seeder
                 'qty' => 30,
                 'comment' => 'user 1, otc 3',
                 'created_at' => NULL,
-                'updated_at' => '2022-07-13 13:41:48',
+                'updated_at' => '2022-07-13 14:41:48',
             ),
             13 => 
             array (
@@ -157,7 +157,7 @@ class OrdersTableSeeder extends Seeder
                 'qty' => 40,
                 'comment' => 'user 1, otc 4',
                 'created_at' => NULL,
-                'updated_at' => '2022-07-13 13:41:48',
+                'updated_at' => '2022-07-13 14:41:48',
             ),
             14 => 
             array (
@@ -166,8 +166,8 @@ class OrdersTableSeeder extends Seeder
                 'user_id' => 4,
                 'qty' => 20,
                 'comment' => NULL,
-                'created_at' => '2022-07-13 14:06:12',
-                'updated_at' => '2022-07-13 14:06:40',
+                'created_at' => '2022-07-13 15:06:12',
+                'updated_at' => '2022-07-13 15:06:40',
             ),
         ));
         

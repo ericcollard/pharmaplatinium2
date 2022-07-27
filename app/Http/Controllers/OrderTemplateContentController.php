@@ -62,8 +62,8 @@ class OrderTemplateContentController extends Controller
                 'name' =>  'required',
                 'price' =>  'required|numeric',
                 'discount' => 'required|numeric',
-                'step_price' => 'required|numeric',
-                'step_value' => 'required|numeric',
+                'step_price' => 'nullable|numeric',
+                'step_value' => 'nullable|numeric',
                 'package_qty' =>  'required|numeric',
             ]
         );
@@ -136,8 +136,8 @@ class OrderTemplateContentController extends Controller
                 'name' =>  'required',
                 'price' =>  'required|numeric',
                 'discount' => 'required|numeric',
-                'step_price' => 'required|numeric',
-                'step_value' => 'required|numeric',
+                'step_price' => 'nullable|numeric',
+                'step_value' => 'nullable|numeric',
                 'package_qty' =>  'required|numeric',
             ]
         );

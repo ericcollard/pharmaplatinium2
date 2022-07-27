@@ -85,9 +85,24 @@
             <div class="card">
                 <div class="card-body">
 
-                    <h4 class="header-title mb-3">Commandes (derniers 36 mois)</h4>
+                    <h4 class="header-title mb-3">Nombre de commande (derniers 36 mois)</h4>
                     <div dir="ltr">
                         <div id="messages-chart" class="apex-charts" data-colors="#727cf5,#e3eaef"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <h4 class="header-title mb-3">Valeur cumulée des commandes (derniers 36 mois)</h4>
+                    <div dir="ltr">
+                        <div id="value-chart" class="apex-charts" data-colors="#727cf5,#e3eaef"></div>
                     </div>
 
                 </div>
@@ -167,7 +182,7 @@
         var dataArrayMessages = {
             series: [ {
                 data: {!!  json_encode($dashboard['chartDataByMonth']['values']) !!} ,
-                name: 'messages',
+                name: 'commande',
                 showInLegend: false,
             } ],
             xaxis: {
@@ -185,11 +200,32 @@
             }
         };
 
+        var dataArrayValues = {
+            series: [ {
+                data: {!!  json_encode($dashboard['chartValueByMonth']['values']) !!} ,
+                name: 'cumul',
+                showInLegend: false,
+            } ],
+            xaxis: {
+                categories: {!! json_encode($dashboard['chartValueByMonth']['dates'])   !!}  ,
+                axisBorder: {
+                    show: false
+                }
+            },
+            tooltip: {
+                y: {
+                    formatter: function formatter(val) {
+                        return val + " €";
+                    }
+                }
+            }
+        };
+
 
         var chart = new ApexCharts(document.querySelector("#messages-chart"), { ...options, ...dataArrayMessages });
-
         chart.render();
-
+        var chart2 = new ApexCharts(document.querySelector("#value-chart"), { ...options, ...dataArrayValues });
+        chart2.render();
 
     </script>
     <!-- end demo js-->

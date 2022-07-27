@@ -52,10 +52,10 @@ where user_id = ".Auth::user()->id) )[0]->cnt;
 
         // Graphique de publication des commandes
         $chartDatas = OrderTemplate::select([
-            DB::raw("DATE_FORMAT(created_at, '%Y-%m') new_date"),
+            DB::raw("DATE_FORMAT(dead_line, '%Y-%m') new_date"),
             DB::raw('COUNT(id) AS count'),
         ])
-            ->whereBetween('created_at', [Carbon::now()->subMonth(36), Carbon::now()])
+            ->whereBetween('dead_line', [Carbon::now()->subMonth(36), Carbon::now()])
             ->groupBy('new_date')
             ->orderBy('new_date', 'ASC')
             ->get();
@@ -80,8 +80,48 @@ where user_id = ".Auth::user()->id) )[0]->cnt;
             $dashboard['chartDataByMonth']['values'][] = (int)$value;
         }
 
+        // graphique des valeurs de commande
+
+        $chartDatas = DB::select( DB::raw("
+
+        select  DATE_FORMAT(order_templates.dead_line, '%Y-%m') as  new_date, sum(tmp_table.content_value) as cumul  from
+
+(select order_template_contents.id,
+CASE
+    WHEN not isnull(order_template_contents.step_price) and sum(orders.qty) >= order_template_contents.step_value THEN order_template_contents.step_price *sum(orders.qty)
+    ELSE order_template_contents.price *sum(orders.qty)
+END as content_value
+from orders
+inner join order_template_contents on orders.ordertemplatecontent_id = order_template_contents.id
+group by order_template_contents.id) as tmp_table
+
+inner join order_template_contents on tmp_table.id = order_template_contents.id
+inner join order_templates on order_template_contents.ordertemplate_id = order_templates.id
+group by new_date
+order by new_date
 
 
+        ") );
+
+
+        $chartValueByMonth = array();
+        foreach($chartDatas as $data) {
+            $chartValueByMonth[$data->new_date] = $data->cumul;
+        }
+        for($i = 0; $i < 36; $i++) {
+            $date = Carbon::now()->subMonth($i);
+            $dateString = $date->format('Y-m');
+            if(!isset($chartValueByMonth[ $dateString ]))
+            {
+                $chartValueByMonth[ $dateString ] = 0;
+            }
+        }
+        ksort($chartValueByMonth);
+        foreach($chartValueByMonth as $dateStr => $value)
+        {
+            $dashboard['chartValueByMonth']['dates'][] = $dateStr;
+            $dashboard['chartValueByMonth']['values'][] = (int)$value;
+        }
 
         return view('index',compact('dashboard'));
     }

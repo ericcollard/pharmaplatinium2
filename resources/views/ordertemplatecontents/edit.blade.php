@@ -134,15 +134,15 @@
 
 
                             <div class="col-lg-3 mb-3">
-                                <label for="step_price" class="form-label">Prix palier* :</label>
+                                <label for="step_price" class="form-label">Prix palier :</label>
                                 <input type="text" class="form-control" id="step_price" name="step_price"
-                                       value="{{ $orderTemplateContent->step_price ? $orderTemplateContent->step_price : old('step_price') }}" required/>
+                                       value="{{ $orderTemplateContent->step_price ? $orderTemplateContent->step_price : old('step_price') }}" />
                             </div>
 
                             <div class="col-lg-3 mb-3 position-relative">
-                                <label for="step_value" class="form-label">Quantité palier* :</label>
+                                <label for="step_value" class="form-label">Quantité palier :</label>
                                 <input type="text" class="form-control" id="step_value" name="step_value"
-                                       value="{{ $orderTemplateContent->step_value ? $orderTemplateContent->step_value : old('step_value') }}" required/>
+                                       value="{{ $orderTemplateContent->step_value ? $orderTemplateContent->step_value : old('step_value') }}" />
                             </div>
 
                         </div>

@@ -30,6 +30,7 @@ class CreateOrderTemplateContentsTable extends Migration
             $table->integer('free_stp')->nullable();
             $table->integer('free_qty')->nullable();
             $table->string('comment')->nullable();
+            $table->unsignedInteger('sort')->default(0);
             $table->timestamps();
         });
     }
