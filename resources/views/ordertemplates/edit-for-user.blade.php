@@ -152,21 +152,21 @@
                                         </td>
                                         <td>{{ number_format($order->totalValue(),2).'€' }}</td>
                                         <td>{{ !is_null($order->step_value) ? number_format($order->step_value,0)  : 'nc' }}</td>
-                                        <td {!! $totalQty <  $order->step_value ? 'style="color : red; font-weight: bold"' : 'style="color : green; font-weight: bold"' !!}  class="ref">
+                                        <td {!! (is_null($order->step_value) or is_null($order->step_price) or $totalQty <  $order->step_value) ? 'style="color : red; font-weight: bold"' : 'style="color : green; font-weight: bold"' !!}  class="ref">
                                             {{ $totalQty }}
                                             @if ($totalQty <  $order->step_value)
                                                 <span class="inferior">Quantité palier<br>non atteinte</span>
                                             @endif
                                         </td>
 
-                                        <td {!! $totalQty <  $order->step_value ? 'style="color : red; font-weight: bold"' : 'style="text-decoration: line-through"' !!}  >
+                                        <td {!! (is_null($order->step_value) or is_null($order->step_price) or $totalQty <  $order->step_value) ? 'style="color : red; font-weight: bold"' : 'style="text-decoration: line-through"' !!}  >
                                             {{ !is_null($order->price) ?
                                                 number_format($order->price*(1-$order->discount),2).'€ (-'.number_format($order->discount*100,0).'%)'
                                                 : 'nc' }}
                                         </td>
 
 
-                                        <td {!! $totalQty >=  $order->step_value ? 'style="color : green; font-weight: bold"' : 'style="text-decoration: line-through"' !!}  >{{ !is_null($order->step_price) ? number_format($order->step_price,2).'€'  : 'nc' }}</td>
+                                        <td {!! (!is_null($order->step_value) && !is_null($order->step_price) && $totalQty >=  $order->step_value) ? 'style="color : green; font-weight: bold"' : 'style="text-decoration: line-through"' !!}  >{{ !is_null($order->step_price) ? number_format($order->step_price,2).'€'  : 'nc' }}</td>
 
                                         <td><a href="#" data-bs-html="true"  data-bs-toggle="tooltip" title="{{ $order->comment }}">{!! Str::limit($order->comment , 10, ' ...')  !!}</a></td>
 

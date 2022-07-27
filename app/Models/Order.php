@@ -34,7 +34,7 @@ class Order extends Model
         }
         else
         {
-            return $this->qty * $this->orderTemplateContent->price;
+            return $this->qty * $this->orderTemplateContent->price * (1.0-$this->orderTemplateContent->discount);
         }
     }
 

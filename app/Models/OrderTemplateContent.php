@@ -71,7 +71,7 @@ class OrderTemplateContent extends Model
         else
         {
             return $this->orders->sum(function($orderDetail) {
-                return $orderDetail->qty * $this->price;
+                return $orderDetail->qty * $this->price * (1.0-$this->discount);
             });
         }
     }
