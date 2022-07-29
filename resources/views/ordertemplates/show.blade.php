@@ -166,7 +166,7 @@
                                         <td>{{ $orderTemplateContentItem->variant }}</td>
                                         <td {!! (is_null($orderTemplateContentItem->step_value) or is_null($orderTemplateContentItem->step_price) or $totalQty <  $orderTemplateContentItem->step_value) ? 'style="color : red; font-weight: bold"' : 'style="text-decoration: line-through"' !!}  >
                                             {{ !is_null($orderTemplateContentItem->price) ?
-                                                number_format($orderTemplateContentItem->price*(1-$orderTemplateContentItem->discount),2).'€ (-'.number_format($orderTemplateContentItem->discount*100,2).'%)'
+                                                number_format($orderTemplateContentItem->price,2).' (-'.number_format($orderTemplateContentItem->discount*100,2).'%) '.number_format($orderTemplateContentItem->price*(1-$orderTemplateContentItem->discount),2).'€'
                                                 : 'nc' }}
                                         <td {!! (!is_null($orderTemplateContentItem->step_value) && !is_null($orderTemplateContentItem->step_price) && $totalQty >=  $orderTemplateContentItem->step_value) ? 'style="color : green; font-weight: bold"' : 'style="text-decoration: line-through"' !!}>
                                             {{ !is_null($orderTemplateContentItem->step_price) ? number_format($orderTemplateContentItem->step_price,2).'€'  : 'nc' }}
@@ -180,9 +180,9 @@
 
 
                                         <td class="table-action">
-                                            <a href="{{ route('orderTemplateContent.edit',$orderTemplateContentItem) }}" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                            <a href="{{ route('orderTemplateContent.duplicate',$orderTemplateContentItem) }}" class="action-icon"> <i class="mdi mdi-content-duplicate"></i></a>
-                                            <a href="{{ route('orderTemplateContent.insert',$orderTemplateContentItem) }}" class="action-icon"> <i class="mdi mdi-insert"></i>Ins</a>
+                                            <a href="{{ route('orderTemplateContent.edit',$orderTemplateContentItem) }}" class="action-icon" title="Modifier"> <i class="mdi mdi-pencil"></i></a>
+                                            <a href="{{ route('orderTemplateContent.duplicate',$orderTemplateContentItem) }}" class="action-icon" title="Dupliquer"> <i class="mdi mdi-content-duplicate"></i></a>
+                                            <a href="{{ route('orderTemplateContent.insert',$orderTemplateContentItem) }}" class="action-icon" title="Insérer avant"> <i class="mdi mdi-table-row-plus-before"></i></a>
                                             <form class="delete d-sm-inline-block action-icon" action="{{ route('orderTemplateContent.destroy',$orderTemplateContentItem) }}" method="POST">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 {{ csrf_field() }}
