@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\OrderTemplate;
 use App\Models\OrderTemplateContent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 
 class OrderTemplateContentController extends Controller
@@ -31,9 +32,35 @@ class OrderTemplateContentController extends Controller
         $orderTemplateContent = new OrderTemplateContent();
         $orderTemplateContent->ordertemplate_id = $orderTemplate->id;
         $orderTemplateContent->discount = $orderTemplate->brand->discount;
-
         return view('ordertemplatecontents.edit', compact('action','orderTemplateContent', 'method'));
     }
+
+    /**
+     * Show the form for insertiong a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function insert(OrderTemplateContent $orderTemplateContent)
+    {
+
+        // insert new item juste
+        $action = URL::route('orderTemplateContent.store');
+        $method = 'POST';
+        $newOrderTemplateContent = new OrderTemplateContent();
+        $newOrderTemplateContent->ordertemplate_id = $orderTemplateContent->orderTemplate->id;
+        $newOrderTemplateContent->discount = $orderTemplateContent->orderTemplate->brand->discount;
+        $insert_before = $orderTemplateContent->id;
+
+        return view('ordertemplatecontents.edit',
+            [
+                'action' => $action,
+                'orderTemplateContent' => $newOrderTemplateContent,
+                'method' => $method,
+                'insert_before' => $insert_before
+                ]
+        );
+    }
+
 
     /**
      * Duplicate a resource
@@ -61,7 +88,7 @@ class OrderTemplateContentController extends Controller
                 'ean' =>'required',
                 'name' =>  'required',
                 'price' =>  'required|numeric',
-                'discount' => 'required|numeric',
+                'discount' => 'required|numeric|between:0,0.999',
                 'step_price' => 'nullable|numeric',
                 'step_value' => 'nullable|numeric',
                 'package_qty' =>  'required|numeric',
@@ -86,7 +113,35 @@ class OrderTemplateContentController extends Controller
                 $data['multi_delivery'] = 0;
             }
 
+            // gestion de l'ordre des lignes de la commande
+            if(array_key_exists('insert_before', $data))
+            {
+                // insérer = décaler les autres =
+                // = aumgenter de 1 le rang du insert_before et de tous les suivants
+                // - donner au nouveau le rang du insert_before
+                //
+                // update order_template_contents set sort = sort + 1 where ordertemplate_id = XXX and sort >= $sort_insert_before
+
+                $sort_insert_before = OrderTemplateContent::find($data['insert_before'])->sort;
+
+                DB::statement(
+                    'update order_template_contents set sort = sort + 1 where ordertemplate_id = :id and sort >= :sort',
+                    ['id' => $data['ordertemplate_id'],
+                       'sort' =>  $sort_insert_before ]
+                );
+                $data['sort'] = $sort_insert_before;
+            }
+            else
+            {
+                // ajouter à la fin = donner un montant Max + 1 à sort
+                $max = 0;
+                $max = OrderTemplateContent::where('ordertemplate_id','=',$data['ordertemplate_id'])->max('sort');
+                $data['sort'] = $max+1;
+            }
+
             $orderTemplateContent = OrderTemplateContent::create($data);
+
+
 
         } catch (\Exception $e) {
             // catch exception when trying to insert invalid reply (spam or missing data)
@@ -135,7 +190,7 @@ class OrderTemplateContentController extends Controller
                 'ean' =>'required',
                 'name' =>  'required',
                 'price' =>  'required|numeric',
-                'discount' => 'required|numeric',
+                'discount' => 'required|numeric|between:0,0.999',
                 'step_price' => 'nullable|numeric',
                 'step_value' => 'nullable|numeric',
                 'package_qty' =>  'required|numeric',

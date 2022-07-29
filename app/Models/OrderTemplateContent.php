@@ -30,6 +30,7 @@ class OrderTemplateContent extends Model
         'free_stp',
         'free_qty',
         'comment',
+        'sort'
     ];
 
 

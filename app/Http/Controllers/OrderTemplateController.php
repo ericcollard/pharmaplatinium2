@@ -167,7 +167,7 @@ class OrderTemplateController extends Controller
      */
     public function show(OrderTemplate $orderTemplate)
     {
-
+        //dd($orderTemplate->content()->orderBy('sort')->get());
         return view('ordertemplates.show', ['orderTemplate' => $orderTemplate]);
     }
 

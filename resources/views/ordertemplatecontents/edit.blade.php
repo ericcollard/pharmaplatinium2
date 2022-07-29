@@ -75,7 +75,12 @@
                     </ol>
                 </div>
                 @if ($method === 'POST')
-                    <h4 class="page-title">Ajout d'une ligne pour le modèle de commande Ref {{ $orderTemplateContent->orderTemplate->id }}</h4>
+                    @isset($insert_before)
+                        <h4 class="page-title">Insertion d'une ligne pour le modèle de commande Ref {{ $orderTemplateContent->orderTemplate->id }}</h4>
+                    @else
+                        <h4 class="page-title">Ajout d'une ligne pour le modèle de commande Ref {{ $orderTemplateContent->orderTemplate->id }}</h4>
+                    @endisset
+
                 @else
                     <h4 class="page-title">Mise à jour d'une ligne pour le modèle de commande Ref {{ $orderTemplateContent->orderTemplate->id }}</h4>
                 @endif
@@ -94,7 +99,9 @@
                         {{ csrf_field() }}
                         {{ method_field($method) }}
                         <input type="hidden" id="ordertemplate_id" name="ordertemplate_id" value={{ $orderTemplateContent->ordertemplate_id }}>
-
+                        @isset($insert_before)
+                            <input type="hidden" id="insert_before" name="insert_before" value={{ $insert_before }}>
+                        @endisset
                         <div class="row">
                             <div class="col-lg-3 mb-3">
                                 <label for="ean" class="form-label">EAN* :</label>
@@ -129,7 +136,7 @@
                             <div class="col-lg-3 mb-3">
                                 <label for="step_price" class="form-label">Remise standard* (0.3 pour 30%):</label>
                                 <input type="text" class="form-control" id="discount" name="discount"
-                                       value="{{ $orderTemplateContent->discount ? $orderTemplateContent->discount : old('discount') }}" required/>
+                                       value="{{ isset($orderTemplateContent->discount) ? $orderTemplateContent->discount : old('discount') }}" required/>
                             </div>
 
 

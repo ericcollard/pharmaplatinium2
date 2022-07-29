@@ -156,7 +156,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($orderTemplate->content as $index => $orderTemplateContentItem)
+                                    @foreach($orderTemplate->content()->orderBy('sort')->get() as $index => $orderTemplateContentItem)
                                         <?php
                                             $totalQty = $orderTemplateContentItem->totalQty();
                                         ?>
@@ -182,6 +182,7 @@
                                         <td class="table-action">
                                             <a href="{{ route('orderTemplateContent.edit',$orderTemplateContentItem) }}" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
                                             <a href="{{ route('orderTemplateContent.duplicate',$orderTemplateContentItem) }}" class="action-icon"> <i class="mdi mdi-content-duplicate"></i></a>
+                                            <a href="{{ route('orderTemplateContent.insert',$orderTemplateContentItem) }}" class="action-icon"> <i class="mdi mdi-insert"></i>Ins</a>
                                             <form class="delete d-sm-inline-block action-icon" action="{{ route('orderTemplateContent.destroy',$orderTemplateContentItem) }}" method="POST">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 {{ csrf_field() }}
