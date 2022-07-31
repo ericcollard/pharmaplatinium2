@@ -75,8 +75,8 @@
                                         <td>{{ $orderTemplateContentItem->variant }}</td>
                                         <td {!! (is_null($orderTemplateContentItem->step_value) or is_null($orderTemplateContentItem->step_price) or $totalQty <  $orderTemplateContentItem->step_value) ? 'style="color : red; font-weight: bold"' : 'style="text-decoration: line-through"' !!}  >
                                         {{ !is_null($orderTemplateContentItem->price) ?
-                                            number_format($orderTemplateContentItem->price*(1-$orderTemplateContentItem->discount),2).'€ (-'.number_format($orderTemplateContentItem->discount*100,2).'%)'
-                                            : 'nc' }}
+                                                                                        number_format($orderTemplateContentItem->price,2).'€ - '.number_format($orderTemplateContentItem->discount*100,2).'% = '.number_format($orderTemplateContentItem->price*(1-$orderTemplateContentItem->discount),2).'€'
+                                                                                        : 'nc' }}
                                         <td {!! (!is_null($orderTemplateContentItem->step_value) && !is_null($orderTemplateContentItem->step_price) && $totalQty >=  $orderTemplateContentItem->step_value) ? 'style="color : green; font-weight: bold"' : 'style="text-decoration: line-through"' !!}>
                                             {{ !is_null($orderTemplateContentItem->step_price) ? number_format($orderTemplateContentItem->step_price,2).'€'  : 'nc' }}
                                         </td>
@@ -101,11 +101,13 @@
                                                     </thead>
                                                     <tbody>
                                                     @foreach($orderTemplateContentItem->orders as $index => $orderItem)
+                                                        @if ($orderItem->qty > 0)
                                                         <tr>
                                                             <td scope="col">{{ $orderItem->pharmacy->name }}</td>
                                                             <td>{{ $orderItem->qty }}</td>
                                                             <td><a href="#" data-bs-html="true"  data-bs-toggle="tooltip" title="{{ $orderItem->comment }}">{!! Str::limit($orderItem->comment , 20, ' ...')  !!}</a></td>
                                                         </tr>
+                                                        @endif
                                                     @endforeach
                                                     </tbody>
                                                 </table>

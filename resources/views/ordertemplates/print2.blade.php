@@ -60,12 +60,14 @@
                 </thead>
                 <tbody>
                     @foreach($order as  $orderLine)
+                        @if ($orderLine->qty > 0)
                         <tr>
                             <td>{{ $orderLine->ean }}</td>
                             <td>{{ $orderLine->name }}</td>
                             <td>{{ $orderLine->variant }}</td>
                             <td>{{ $orderLine->qty }}</td>
                         </tr>
+                        @endif
                     @endforeach
                 </tbody>
             </table>
