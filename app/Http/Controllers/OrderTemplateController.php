@@ -428,4 +428,10 @@ class OrderTemplateController extends Controller
     {
         return view('ordertemplates.print3', compact('orderTemplate'));
     }
+
+    public function sort(OrderTemplate $orderTemplate)
+    {
+        $orderTemplate->sort();
+        return redirect(route('orderTemplate.show',$orderTemplate))->with( ['message' => 'Commande re-classée', 'alert' => 'success']);
+    }
 }

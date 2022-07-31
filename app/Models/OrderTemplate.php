@@ -91,4 +91,17 @@ class OrderTemplate extends Model
 
         return $newOrderTemplate;
     }
+
+    public function sort()
+    {
+        $contentItems = $this->content()->orderBy('id')->get();
+        $index = 1;
+        foreach ($contentItems as $item)
+        {
+            $item->sort = $index;
+            $item->save();
+            $index++;
+        }
+
+    }
 }

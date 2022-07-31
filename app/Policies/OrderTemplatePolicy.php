@@ -156,4 +156,19 @@ class OrderTemplatePolicy
         return false;
     }
 
+    /**
+     * Determine if the given order can be re sorted
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Post  $orderTemplate
+     * @return bool
+     */
+    public function reorder(User $user, OrderTemplate $orderTemplate)
+    {
+        if (Auth::guest()) return false;
+        return false;
+    }
+
+
+
 }

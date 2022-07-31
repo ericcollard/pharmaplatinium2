@@ -30,7 +30,8 @@
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="mb-1"><span class="header-title">Gestionnaire : </span> <span class="text-muted">{{ $orderTemplate->brand->manager->name }}</span></div>
+                                <div class="mb-1"><span class="header-title">Gestionnaire : </span> <span class="text-muted"><a href="{{ route('user.show',$orderTemplate->brand->manager) }}">{{ $orderTemplate->brand->manager->name }}</a></span></div>
+                                <div class="mb-1"><span class="header-title">Laboratoire : </span> <span class="text-muted"><a href="{{ route('brand.show',$orderTemplate->brand) }}">{{ $orderTemplate->brand->name }}</a></span></div>
                                 <div class="mb-1"><span class="header-title">Date de cloture : </span> <span class="text-muted">{{ $orderTemplate->dead_line->formatLocalized('%d %B %Y') }}</span></div>
 
                             </div> <!-- end col-->
@@ -63,6 +64,14 @@
                                                 <i class="mdi mdi-content-duplicate me-1"></i> Dupliquer
                                             </a>
                                         </button>
+                                    @endcan
+
+                                    @can ('reorder', $orderTemplate)
+                                            <button type="button" class="btn btn-danger mx-1 mb-1">
+                                                <a href="{{ route('orderTemplate.sort' , ['orderTemplate' => $orderTemplate]) }}" style="color: inherit">
+                                                    <i class="mdi mdi-sort-ascending me-1"></i> Reclasser
+                                                </a>
+                                            </button>
                                     @endcan
 
                                     @can ('print', $orderTemplate)
@@ -166,7 +175,7 @@
                                         <td>{{ $orderTemplateContentItem->variant }}</td>
                                         <td {!! (is_null($orderTemplateContentItem->step_value) or is_null($orderTemplateContentItem->step_price) or $totalQty <  $orderTemplateContentItem->step_value) ? 'style="color : red; font-weight: bold"' : 'style="text-decoration: line-through"' !!}  >
                                             {{ !is_null($orderTemplateContentItem->price) ?
-                                                number_format($orderTemplateContentItem->price,2).' (-'.number_format($orderTemplateContentItem->discount*100,2).'%) '.number_format($orderTemplateContentItem->price*(1-$orderTemplateContentItem->discount),2).'€'
+                                                number_format($orderTemplateContentItem->price,2).'€ - '.number_format($orderTemplateContentItem->discount*100,2).'% = '.number_format($orderTemplateContentItem->price*(1-$orderTemplateContentItem->discount),2).'€'
                                                 : 'nc' }}
                                         <td {!! (!is_null($orderTemplateContentItem->step_value) && !is_null($orderTemplateContentItem->step_price) && $totalQty >=  $orderTemplateContentItem->step_value) ? 'style="color : green; font-weight: bold"' : 'style="text-decoration: line-through"' !!}>
                                             {{ !is_null($orderTemplateContentItem->step_price) ? number_format($orderTemplateContentItem->step_price,2).'€'  : 'nc' }}
