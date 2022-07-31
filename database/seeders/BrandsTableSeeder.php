@@ -29,8 +29,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 4,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             1 => 
             array (
@@ -42,8 +42,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 4,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             2 => 
             array (
@@ -55,8 +55,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 4,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             3 => 
             array (
@@ -65,11 +65,11 @@ class BrandsTableSeeder extends Seeder
                 'contact_email' => NULL,
                 'contact_phone' => NULL,
                 'contact_name' => NULL,
-                'discount' => 0.0,
+                'discount' => 0.45,
                 'manager_id' => 4,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-26 13:04:26',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-31 15:27:15',
             ),
             4 => 
             array (
@@ -78,11 +78,11 @@ class BrandsTableSeeder extends Seeder
                 'contact_email' => NULL,
                 'contact_phone' => NULL,
                 'contact_name' => NULL,
-                'discount' => 0.0,
+                'discount' => 0.5,
                 'manager_id' => 4,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-31 15:28:24',
             ),
             5 => 
             array (
@@ -94,8 +94,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 4,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 22:03:15',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 23:03:15',
             ),
             6 => 
             array (
@@ -107,8 +107,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 4,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             7 => 
             array (
@@ -120,8 +120,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 4,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             8 => 
             array (
@@ -133,8 +133,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 4,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             9 => 
             array (
@@ -146,8 +146,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 4,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             10 => 
             array (
@@ -159,8 +159,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 4,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             11 => 
             array (
@@ -172,21 +172,21 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 2,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             12 => 
             array (
                 'id' => 13,
-                'name' => 'Bausch et Lombe',
+                'name' => 'Bausch et Lomb',
                 'contact_email' => NULL,
                 'contact_phone' => NULL,
                 'contact_name' => NULL,
-                'discount' => 0.0,
+                'discount' => 0.45,
                 'manager_id' => 2,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-31 15:09:25',
             ),
             13 => 
             array (
@@ -198,8 +198,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 2,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             14 => 
             array (
@@ -211,8 +211,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 2,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             15 => 
             array (
@@ -221,11 +221,11 @@ class BrandsTableSeeder extends Seeder
                 'contact_email' => NULL,
                 'contact_phone' => NULL,
                 'contact_name' => NULL,
-                'discount' => 0.0,
+                'discount' => 0.2,
                 'manager_id' => 2,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-31 15:29:56',
             ),
             16 => 
             array (
@@ -237,21 +237,21 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 2,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             17 => 
             array (
                 'id' => 18,
-                'name' => 'Grinberg by St Jean',
+                'name' => 'Grimberg by St Jean',
                 'contact_email' => NULL,
                 'contact_phone' => NULL,
                 'contact_name' => NULL,
                 'discount' => 0.0,
                 'manager_id' => 2,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-28 11:26:28',
             ),
             18 => 
             array (
@@ -263,8 +263,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 2,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             19 => 
             array (
@@ -276,8 +276,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 2,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             20 => 
             array (
@@ -289,8 +289,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 2,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             21 => 
             array (
@@ -302,8 +302,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 2,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             22 => 
             array (
@@ -315,8 +315,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 2,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             23 => 
             array (
@@ -328,8 +328,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 2,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             24 => 
             array (
@@ -341,8 +341,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 2,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             25 => 
             array (
@@ -354,8 +354,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 3,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             26 => 
             array (
@@ -367,8 +367,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 3,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             27 => 
             array (
@@ -380,8 +380,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 3,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             28 => 
             array (
@@ -393,8 +393,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 3,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             29 => 
             array (
@@ -406,8 +406,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 3,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             30 => 
             array (
@@ -419,8 +419,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 3,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             31 => 
             array (
@@ -432,8 +432,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 3,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             32 => 
             array (
@@ -445,8 +445,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 3,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             33 => 
             array (
@@ -458,8 +458,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 3,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             34 => 
             array (
@@ -471,8 +471,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 3,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             35 => 
             array (
@@ -484,8 +484,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 3,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             36 => 
             array (
@@ -497,8 +497,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 6,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             37 => 
             array (
@@ -510,8 +510,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 6,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             38 => 
             array (
@@ -523,8 +523,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 6,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             39 => 
             array (
@@ -536,8 +536,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 6,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             40 => 
             array (
@@ -549,8 +549,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 6,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             41 => 
             array (
@@ -562,8 +562,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 5,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             42 => 
             array (
@@ -575,8 +575,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 5,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             43 => 
             array (
@@ -588,8 +588,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 5,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             44 => 
             array (
@@ -601,8 +601,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 5,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             45 => 
             array (
@@ -614,8 +614,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 5,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             46 => 
             array (
@@ -627,8 +627,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 5,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             47 => 
             array (
@@ -640,8 +640,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 5,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             48 => 
             array (
@@ -653,8 +653,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 5,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             49 => 
             array (
@@ -666,8 +666,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 5,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             50 => 
             array (
@@ -679,8 +679,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 7,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             51 => 
             array (
@@ -692,8 +692,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 7,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             52 => 
             array (
@@ -705,8 +705,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 7,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             53 => 
             array (
@@ -718,8 +718,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 10,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             54 => 
             array (
@@ -731,8 +731,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 10,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             55 => 
             array (
@@ -744,8 +744,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 10,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             56 => 
             array (
@@ -757,8 +757,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 10,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             57 => 
             array (
@@ -770,8 +770,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 10,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
             58 => 
             array (
@@ -783,8 +783,8 @@ class BrandsTableSeeder extends Seeder
                 'discount' => 0.0,
                 'manager_id' => 8,
                 'comment' => NULL,
-                'created_at' => '2022-07-21 15:09:30',
-                'updated_at' => '2022-07-21 15:09:30',
+                'created_at' => '2022-07-21 16:09:30',
+                'updated_at' => '2022-07-21 16:09:30',
             ),
         ));
         

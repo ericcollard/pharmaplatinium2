@@ -53,6 +53,7 @@
                             <div class="col-sm-6">
                                 <div class="mb-1"><span class="header-title">Donneur d'ordre : </span> <span class="text-muted">{{ Auth::user()->name }}</span></div>
                                 <div class="mb-1"><span class="header-title">Date de cloture : </span> <span class="text-muted">{{ $orderTemplate->dead_line->formatLocalized('%d %B %Y') }}</span></div>
+                                <div class="mb-1"><span class="header-title">Laboratoire : </span> <span class="text-muted"><a href="{{ route('brand.show',$orderTemplate->brand) }}">{{ $orderTemplate->brand->name }}</a></span></div>
                                 <div class="header-title">Commentaire</div>
                                 <div class="text-muted  mb-1">
                                     {!! $orderTemplate->comment ?: 'nc' !!}
@@ -66,7 +67,7 @@
                                     <span class="text-muted">{{ !is_null($orderTemplate->franco) ? number_format($orderTemplate->franco,2).'€'  : 'nc' }}</span> {!! $orderTemplate->totalValue() <  $orderTemplate->franco ? ' <span class="badge bg-warning text-dark">Franco non atteint !</span>' : '' !!}
                                 </div>
                                 <div class="mb-1"><span class="header-title">Statut : </span> <span class="text-muted">{{ $orderTemplate->status }}</span></div>
-                                <div class="mb-1"><span class="header-title">Gestionnaire : </span> <span class="text-muted">{{ $orderTemplate->brand->manager->name }}</span></div>
+                                <div class="mb-1"><span class="header-title">Gestionnaire : </span> <span class="text-muted"><a href="{{ route('user.show',$orderTemplate->brand->manager) }}">{{ $orderTemplate->brand->manager->name }}</a></span></div>
                                 <div class="mb-1"><span class="header-title">Livraison multiple : </span>{!! $orderTemplate->multi_deliveries == 1 ? '<i class="mdi mdi-checkbox-marked-outline mdi-18px"></i>'  : '<i class="mdi mdi-checkbox-blank-outline mdi-18px"></i>' !!} <span class="text-muted">(fonctionnalité non active)</span></div>
                                 <div class="mb-1"><span class="header-title">Franco obligatoire : </span>{!! $orderTemplate->franco_required == 1 ? '<i class="mdi mdi-checkbox-marked-outline mdi-18px"></i>'  : '<i class="mdi mdi-checkbox-blank-outline mdi-18px"></i>' !!} <span class="text-muted"></span>
                                     @if ($orderTemplate->franco_required == 1 and $orderTemplate->totalValue() <  $orderTemplate->franco)
@@ -161,8 +162,9 @@
 
                                         <td {!! (is_null($order->step_value) or is_null($order->step_price) or $totalQty <  $order->step_value) ? 'style="color : red; font-weight: bold"' : 'style="text-decoration: line-through"' !!}  >
                                             {{ !is_null($order->price) ?
-                                                number_format($order->price*(1-$order->discount),2).'€ (-'.number_format($order->discount*100,0).'%)'
+                                                number_format($order->price,2).'€ - '.number_format($order->discount*100,2).'% = '.number_format($order->price*(1-$order->discount),2).'€'
                                                 : 'nc' }}
+
                                         </td>
 
 
