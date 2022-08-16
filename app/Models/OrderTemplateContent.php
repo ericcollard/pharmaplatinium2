@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class OrderTemplateContent extends Model
 {
@@ -79,10 +80,22 @@ class OrderTemplateContent extends Model
 
     public function duplicate($orderTemplateId = 0)
     {
+        //reclassement des autres lignes
+        DB::statement(
+            'update order_template_contents set sort = sort + 1 where ordertemplate_id = :id and sort > :sort',
+            ['id' => $this->ordertemplate_id,
+                'sort' =>  $this->sort ]
+        );
+
         $newOrderTemplateContent =$this->replicate();
+        $newOrderTemplateContent->sort = $newOrderTemplateContent->sort +1;
         $newOrderTemplateContent->created_at = now();
         if ($orderTemplateId > 0) $newOrderTemplateContent->ordertemplate_id = $orderTemplateId;
         $newOrderTemplateContent->save();
+
+
+
+
         return $newOrderTemplateContent;
     }
 
