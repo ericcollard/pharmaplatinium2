@@ -290,7 +290,7 @@ class OrderTemplateController extends Controller
     {
         $action = URL::route('orderTemplate.store');
         $method = 'POST';
-        $brands = Brand::all();
+        $brands = Brand::orderBy('name', 'ASC')->get();
         $orderTemplate = new OrderTemplate();
         $orderTemplate->franco = 1000;
         $orderTemplate->status = 'Brouillon';
