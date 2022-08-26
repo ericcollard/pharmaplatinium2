@@ -74,6 +74,52 @@ class OrderTemplateContentController extends Controller
         return redirect($orderTemplateContent->orderTemplate->path())->with( ['message' => 'Ligne dupliquée', 'alert' => 'success']);
     }
 
+    /**
+     * Move a resource
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function moveup(OrderTemplateContent $orderTemplateContent)
+    {
+        // modifier le champ order
+        $current_sort_value = $orderTemplateContent->sort;
+        // dd($current_sort_value);
+        $previous_item = OrderTemplateContent::where('ordertemplate_id','=',$orderTemplateContent->orderTemplate->id)
+            ->where('sort','<',$current_sort_value)
+            ->orderby('sort','desc')
+            ->firstOrFail();
+
+        $orderTemplateContent->sort = $previous_item->sort;
+        $orderTemplateContent->save();
+        $previous_item->sort = $current_sort_value;
+        $previous_item->save();
+
+        return redirect($orderTemplateContent->orderTemplate->path())->with( ['message' => 'Ligne déplacée vers le haut', 'alert' => 'success']);
+    }
+
+    /**
+     * Move a resource
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function movedown(OrderTemplateContent $orderTemplateContent)
+    {
+        // modifier le champ order
+        $current_sort_value = $orderTemplateContent->sort;
+        // dd($current_sort_value);
+        $next_item = OrderTemplateContent::where('ordertemplate_id','=',$orderTemplateContent->orderTemplate->id)
+            ->where('sort','>',$current_sort_value)
+            ->orderby('sort','asc')
+            ->firstOrFail();
+
+        $orderTemplateContent->sort = $next_item->sort;
+        $orderTemplateContent->save();
+        $next_item->sort = $current_sort_value;
+        $next_item->save();
+
+        return redirect($orderTemplateContent->orderTemplate->path())->with( ['message' => 'Ligne déplacée vers le bas', 'alert' => 'success']);
+    }
+
 
 
     /**

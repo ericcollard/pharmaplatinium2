@@ -188,7 +188,13 @@
                                         <td><a href="#" data-bs-html="true" data-bs-toggle="tooltip" title="{{ $orderTemplateContentItem->comment }}">{!! Str::limit($orderTemplateContentItem->comment , 10, ' ...')  !!}</a></td>
 
 
-                                        <td class="table-action">
+                                        <td class="table-action" NOWRAP>
+                                            @if (! $loop->first)
+                                                <a href="{{ route('orderTemplateContent.moveup',$orderTemplateContentItem) }}" class="action-icon" title="Remonter"> <i class="mdi mdi-arrow-up-bold"></i></a>
+                                            @endif
+                                            @if (! $loop->last)
+                                                <a href="{{ route('orderTemplateContent.movedown',$orderTemplateContentItem) }}" class="action-icon" title="Descendre"> <i class="mdi mdi-arrow-down-bold"></i></a>
+                                            @endif
                                             <a href="{{ route('orderTemplateContent.edit',$orderTemplateContentItem) }}" class="action-icon" title="Modifier"> <i class="mdi mdi-pencil"></i></a>
                                             <a href="{{ route('orderTemplateContent.duplicate',$orderTemplateContentItem) }}" class="action-icon" title="Dupliquer"> <i class="mdi mdi-content-duplicate"></i></a>
                                             <a href="{{ route('orderTemplateContent.insert',$orderTemplateContentItem) }}" class="action-icon" title="Insérer avant"> <i class="mdi mdi-table-row-plus-before"></i></a>

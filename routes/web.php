@@ -72,6 +72,8 @@ Route::delete('/order/{orderTemplate}',[OrderTemplateController::class, 'destroy
 Route::get('/ordertemplatecontent', [OrderTemplateContentController::class, 'index'])->name('orderTemplateContent.list')->middleware('auth');
 Route::get('/ordertemplatecontent/{orderTemplate}/create', [OrderTemplateContentController::class, 'create'])->name('orderTemplateContent.create');
 Route::get('/ordertemplatecontent/{orderTemplateContent}/duplicate', [OrderTemplateContentController::class, 'duplicate'])->name('orderTemplateContent.duplicate');
+Route::get('/ordertemplatecontent/{orderTemplateContent}/moveup', [OrderTemplateContentController::class, 'moveup'])->name('orderTemplateContent.moveup');
+Route::get('/ordertemplatecontent/{orderTemplateContent}/movedown', [OrderTemplateContentController::class, 'movedown'])->name('orderTemplateContent.movedown');
 Route::get('/ordertemplatecontent/{orderTemplateContent}/insert', [OrderTemplateContentController::class, 'insert'])->name('orderTemplateContent.insert');
 Route::get('/ordertemplatecontent/{orderTemplateContent}', [OrderTemplateContentController::class, 'show'])->name('orderTemplateContent.show')->middleware('auth');
 Route::get('/ordertemplatecontent/{orderTemplateContent}/edit', [OrderTemplateContentController::class, 'edit'])->name('orderTemplateContent.edit')->middleware('auth');
