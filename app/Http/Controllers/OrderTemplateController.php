@@ -154,6 +154,17 @@ class OrderTemplateController extends Controller
         return $this->listOfOrder($dataTable,"Livrée");
     }
 
+    public function listOfOpenedFreeOrders()
+    {
+        $listOfFreeOrders = OrderTemplate::where('status','=','Ouverte')
+            ->orderby('dead_line')
+            ->get();
+
+        //dd($listOfFreeOrders);
+
+        return view('ordertemplates.list-freeorders', ['listOfFreeOrders' => $listOfFreeOrders]);
+//::join('brands','brands.id','=','order_templates.brand_id')
+    }
 
 
 

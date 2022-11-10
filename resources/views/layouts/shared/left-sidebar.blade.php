@@ -68,13 +68,16 @@
                 <div class="collapse" id="sidebarAdmin1" style="">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="{{ route('order.openedOrders') }}">Commandes Ouvertes</a>
+                            <a href="{{ route('order.openedOrders') }}">Mes commandes Ouvertes</a>
                         </li>
                         <li>
-                            <a href="{{ route('order.closedOrders') }}">Commandes Fermées</a>
+                            <a href="{{ route('order.closedOrders') }}">Mes commandes Fermées</a>
                         </li>
                         <li>
-                            <a href="{{ route('order.index') }}">Toutes</a>
+                            <a href="{{ route('order.index') }}">Toutes mes commandes</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('order.openedFreeOrders') }}">Toutes les commandes ouvertes</a>
                         </li>
                     </ul>
                 </div>

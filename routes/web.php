@@ -64,6 +64,7 @@ Route::get('/order/draft', [OrderTemplateController::class, 'listOfDraftOrder'])
 Route::get('/order/open', [OrderTemplateController::class, 'listOfOpenedOrder'])->name('order.openedOrders')->middleware('auth');
 Route::get('/order/close', [OrderTemplateController::class, 'listOfClosedOrder'])->name('order.closedOrders')->middleware('auth');
 Route::get('/order/delivered', [OrderTemplateController::class, 'listOfDeliveredOrder'])->name('order.deliveredOrders')->middleware('auth');
+Route::get('/order/openfree', [OrderTemplateController::class, 'listOfOpenedFreeOrders'])->name('order.openedFreeOrders')->middleware('auth');
 Route::get('/order/{orderTemplate}/edit', [OrderTemplateController::class, 'edit_for_user'])->name('order.edit')->middleware('auth');
 Route::patch('/order/{orderTemplate}',[OrderTemplateController::class, 'update_for_user'])->name('order.update');
 Route::delete('/order/{orderTemplate}',[OrderTemplateController::class, 'destroy_for_user'])->name('order.destroy');
